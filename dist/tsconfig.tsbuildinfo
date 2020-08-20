@@ -201,9 +201,64 @@
         "signature": "cd6efb9467a8b6338ece2e2855e37765700f2cd061ca54b01b33878cf5c7677e",
         "affectsGlobalScope": true
       },
+      "../src/lib/Piece.ts": {
+        "version": "8bf639e9e3a9484f86579e21c16a9bddf60f01afde0d0f4b3bd0113c8fac2ae7",
+        "signature": "9186c506a53cead884621477a7ba24900fe0f13b9c5be800a758ccafdb5c7fea",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@discordjs/collection/dist/index.d.ts": {
+        "version": "7be7f76b784383fa84812ca7eb8ad10315c9d482c0d25f178645365405509d44",
+        "signature": "7be7f76b784383fa84812ca7eb8ad10315c9d482c0d25f178645365405509d44",
+        "affectsGlobalScope": false
+      },
+      "../src/lib/errors/LoaderError.ts": {
+        "version": "f8ddb818c176991f96f3086722868d91c7c5580d3acba6c4275e3a2d097b0b1c",
+        "signature": "fee5348cca38ceb4b1ebefc6e3a21b61ebf673bc2cbf7cb3eff1ea177401858f",
+        "affectsGlobalScope": false
+      },
+      "../src/lib/strategies/ILoader.ts": {
+        "version": "e626a04375cb5d5a3ca771596548820008a92c6240643db1767d91f446c03694",
+        "signature": "f4a97f517a0a2484b413a621f62db2154e93d37a3b98039e76ede41fda5405e4",
+        "affectsGlobalScope": false
+      },
+      "../src/lib/strategies/Shared.ts": {
+        "version": "f9d6de5d912f53950722b1a88147631e2b0836c48183a62a1625f402aa0d25fa",
+        "signature": "139d54c386ea8bd891988b50abe1254111d33ba8542410d3a40517fed27db0ab",
+        "affectsGlobalScope": false
+      },
+      "../src/lib/strategies/LoadSingle.ts": {
+        "version": "3d488379b7e0284046c8ad695faa2228204df11744bba321395bdb0cb8119c70",
+        "signature": "666a2c69848477a2175b081dc81cbc95c76f7ba068a1b3e1262057fc610dcc94",
+        "affectsGlobalScope": false
+      },
+      "../src/lib/Util.ts": {
+        "version": "8155eafdd9cae2a1532da324e5f3e36f4c8045762939dd6d3a96a2605fe0e82d",
+        "signature": "04aad18d6b176fa5449ed48c80f1318be02ce54ca01b961f40834b3306adce22",
+        "affectsGlobalScope": false
+      },
+      "../src/lib/Store.ts": {
+        "version": "7ee991609f0d838b048f7217801c906ba80536996ebdd175e626e909eeb24729",
+        "signature": "717a72ae57690330b406e646df1d29e66b36c2e9c638d0562619ea25c751cea0",
+        "affectsGlobalScope": false
+      },
+      "../src/lib/strategies/LoadMultiple.ts": {
+        "version": "a9074ed7874c232f01eac28a5f42111d404430a52a0f329ae5c4a01719aec8da",
+        "signature": "82182cc25aa493dd9704c241a12c6be2fd982e6f37b51d795469a22e664dc296",
+        "affectsGlobalScope": false
+      },
       "../src/index.ts": {
-        "version": "68bcc80788f8e06c8a62af42fcede7926f7794b0a62420639dec8b1aecc80ce2",
-        "signature": "7a5ecfc2efb9a0edfc435cd996247dca662220dcaca01906a39121fd695aac2e",
+        "version": "623441b5c22d0d4b885b1e5cbc07f12daa6b1542bc0fd292b8a67f990bed3add",
+        "signature": "413063b97e20471a628f7924a66f6b6d624984a375af8bccd4a7e721d5a8bdf1",
+        "affectsGlobalScope": false
+      },
+      "../src/lib/AliasPiece.ts": {
+        "version": "6a727042b1153ddd7e4735812ba7005f2b52de177bbcf4f7b7e7b8a3631e517a",
+        "signature": "346431a8c36827c8b06bb57168e19763d124d976d1bc7010e5386e6106ec1d4b",
+        "affectsGlobalScope": false
+      },
+      "../src/lib/AliasStore.ts": {
+        "version": "46d62d10debce00d7b2e367876d3014306b7acc7121aa3972fa7e52d31ed1e0e",
+        "signature": "d379e5b75bd00c3cdcaba1c6367b3bc7a9d9a60c63fa9bdb08542ec22403a57e",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/color-name/index.d.ts": {
@@ -525,6 +580,14 @@
       "configFilePath": "../src/tsconfig.json"
     },
     "referencedMap": {
+      "../node_modules/@discordjs/collection/dist/index.d.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/process.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/process.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
       "../node_modules/@types/color-name/index.d.ts": [
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/process.d.ts",
@@ -1409,10 +1472,125 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/process.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/lib/Piece.ts",
+        "../src/lib/Store.ts",
+        "../src/lib/errors/LoaderError.ts",
+        "../src/lib/strategies/ILoader.ts",
+        "../src/lib/strategies/LoadMultiple.ts",
+        "../src/lib/strategies/LoadSingle.ts"
+      ],
+      "../src/lib/AliasPiece.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/process.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/process.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/lib/Piece.ts"
+      ],
+      "../src/lib/AliasStore.ts": [
+        "../node_modules/@discordjs/collection/dist/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/process.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/process.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/lib/AliasPiece.ts",
+        "../src/lib/Store.ts"
+      ],
+      "../src/lib/Piece.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/process.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/process.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../src/lib/Store.ts": [
+        "../node_modules/@discordjs/collection/dist/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/fs/promises.d.ts",
+        "../node_modules/@types/node/path.d.ts",
+        "../node_modules/@types/node/process.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/process.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/lib/Piece.ts",
+        "../src/lib/Util.ts",
+        "../src/lib/errors/LoaderError.ts",
+        "../src/lib/strategies/ILoader.ts",
+        "../src/lib/strategies/LoadSingle.ts"
+      ],
+      "../src/lib/Util.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/path.d.ts",
+        "../node_modules/@types/node/process.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/process.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../src/lib/errors/LoaderError.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/process.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/process.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../src/lib/strategies/ILoader.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/process.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/process.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/lib/Piece.ts",
+        "../src/lib/Store.ts"
+      ],
+      "../src/lib/strategies/LoadMultiple.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/process.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/process.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/lib/errors/LoaderError.ts",
+        "../src/lib/strategies/ILoader.ts",
+        "../src/lib/strategies/Shared.ts"
+      ],
+      "../src/lib/strategies/LoadSingle.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/process.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/process.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/lib/errors/LoaderError.ts",
+        "../src/lib/strategies/ILoader.ts",
+        "../src/lib/strategies/Shared.ts"
+      ],
+      "../src/lib/strategies/Shared.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/process.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/process.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ]
     },
     "exportedModulesMap": {
+      "../node_modules/@discordjs/collection/dist/index.d.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/process.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/process.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
       "../node_modules/@types/color-name/index.d.ts": [
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/process.d.ts",
@@ -2290,9 +2468,41 @@
         "../node_modules/@types/node/ts3.2/process.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
+      ],
+      "../src/index.ts": [
+        "../src/lib/Piece.ts",
+        "../src/lib/Store.ts",
+        "../src/lib/errors/LoaderError.ts",
+        "../src/lib/strategies/ILoader.ts",
+        "../src/lib/strategies/LoadMultiple.ts",
+        "../src/lib/strategies/LoadSingle.ts"
+      ],
+      "../src/lib/AliasPiece.ts": [
+        "../src/lib/Piece.ts"
+      ],
+      "../src/lib/AliasStore.ts": [
+        "../node_modules/@discordjs/collection/dist/index.d.ts",
+        "../src/lib/AliasPiece.ts",
+        "../src/lib/Store.ts"
+      ],
+      "../src/lib/Store.ts": [
+        "../node_modules/@discordjs/collection/dist/index.d.ts",
+        "../src/lib/Piece.ts",
+        "../src/lib/strategies/ILoader.ts"
+      ],
+      "../src/lib/strategies/ILoader.ts": [
+        "../src/lib/Piece.ts",
+        "../src/lib/Store.ts"
+      ],
+      "../src/lib/strategies/LoadMultiple.ts": [
+        "../src/lib/strategies/ILoader.ts"
+      ],
+      "../src/lib/strategies/LoadSingle.ts": [
+        "../src/lib/strategies/ILoader.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
+      "../node_modules/@discordjs/collection/dist/index.d.ts",
       "../node_modules/@types/color-name/index.d.ts",
       "../node_modules/@types/eslint-visitor-keys/index.d.ts",
       "../node_modules/@types/json-schema/index.d.ts",
@@ -2391,7 +2601,17 @@
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "../node_modules/typescript/lib/lib.esnext.promise.d.ts",
       "../node_modules/typescript/lib/lib.esnext.string.d.ts",
-      "../src/index.ts"
+      "../src/index.ts",
+      "../src/lib/AliasPiece.ts",
+      "../src/lib/AliasStore.ts",
+      "../src/lib/Piece.ts",
+      "../src/lib/Store.ts",
+      "../src/lib/Util.ts",
+      "../src/lib/errors/LoaderError.ts",
+      "../src/lib/strategies/ILoader.ts",
+      "../src/lib/strategies/LoadMultiple.ts",
+      "../src/lib/strategies/LoadSingle.ts",
+      "../src/lib/strategies/Shared.ts"
     ]
   },
   "version": "4.0.2"

@@ -1,0 +1,1 @@
+{"version":3,"file":"LoaderError.d.ts","sourceRoot":"","sources":["../../../src/lib/errors/LoaderError.ts"],"names":[],"mappings":"AAAA,qBAAa,WAAY,SAAQ,KAAK;IACrC,SAAgB,IAAI,EAAE,MAAM,CAAC;gBAEV,IAAI,EAAE,MAAM,EAAE,OAAO,EAAE,MAAM;CAIhD"}
