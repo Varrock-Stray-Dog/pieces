@@ -241,16 +241,6 @@
         "signature": "717a72ae57690330b406e646df1d29e66b36c2e9c638d0562619ea25c751cea0",
         "affectsGlobalScope": false
       },
-      "../src/lib/strategies/LoadMultiple.ts": {
-        "version": "a9074ed7874c232f01eac28a5f42111d404430a52a0f329ae5c4a01719aec8da",
-        "signature": "82182cc25aa493dd9704c241a12c6be2fd982e6f37b51d795469a22e664dc296",
-        "affectsGlobalScope": false
-      },
-      "../src/index.ts": {
-        "version": "623441b5c22d0d4b885b1e5cbc07f12daa6b1542bc0fd292b8a67f990bed3add",
-        "signature": "413063b97e20471a628f7924a66f6b6d624984a375af8bccd4a7e721d5a8bdf1",
-        "affectsGlobalScope": false
-      },
       "../src/lib/AliasPiece.ts": {
         "version": "6a727042b1153ddd7e4735812ba7005f2b52de177bbcf4f7b7e7b8a3631e517a",
         "signature": "346431a8c36827c8b06bb57168e19763d124d976d1bc7010e5386e6106ec1d4b",
@@ -259,6 +249,16 @@
       "../src/lib/AliasStore.ts": {
         "version": "46d62d10debce00d7b2e367876d3014306b7acc7121aa3972fa7e52d31ed1e0e",
         "signature": "d379e5b75bd00c3cdcaba1c6367b3bc7a9d9a60c63fa9bdb08542ec22403a57e",
+        "affectsGlobalScope": false
+      },
+      "../src/lib/strategies/LoadMultiple.ts": {
+        "version": "a9074ed7874c232f01eac28a5f42111d404430a52a0f329ae5c4a01719aec8da",
+        "signature": "82182cc25aa493dd9704c241a12c6be2fd982e6f37b51d795469a22e664dc296",
+        "affectsGlobalScope": false
+      },
+      "../src/index.ts": {
+        "version": "1328ff331607f15d7cc1e88fed7ac2a380a938d1ecd0ed7a0ad9e4a22f86c62e",
+        "signature": "e5e2af61bb4374407b644963ef84b39c6cd06559b7a11d1402d2b117d4956e83",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/color-name/index.d.ts": {
@@ -1473,6 +1473,8 @@
         "../node_modules/@types/node/ts3.2/process.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/lib/AliasPiece.ts",
+        "../src/lib/AliasStore.ts",
         "../src/lib/Piece.ts",
         "../src/lib/Store.ts",
         "../src/lib/errors/LoaderError.ts",
@@ -2470,6 +2472,8 @@
         "../node_modules/@types/node/util.d.ts"
       ],
       "../src/index.ts": [
+        "../src/lib/AliasPiece.ts",
+        "../src/lib/AliasStore.ts",
         "../src/lib/Piece.ts",
         "../src/lib/Store.ts",
         "../src/lib/errors/LoaderError.ts",
