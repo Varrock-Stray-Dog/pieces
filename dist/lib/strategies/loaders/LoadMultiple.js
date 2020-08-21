@@ -1,12 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoadMultiple = void 0;
-const LoaderError_1 = require("../errors/LoaderError");
-const Shared_1 = require("./Shared");
+const LoaderError_1 = require("../../errors/LoaderError");
+const Shared_1 = require("../Shared");
+/**
+ * The multi-loader. This loader can load multiple classes from a module
+ * into the store. The catch is that you must specify the name for each
+ * piece.
+ */
 exports.LoadMultiple = {
-    async *onLoad(store, path) {
+    async *load(store, path) {
         let yielded = false;
-        const result = await store.onPreload(path);
+        const result = await store.preloadHook(path);
         // Support `module.exports`:
         if (Shared_1.isClass(result) && Shared_1.classExtends(result, store.Constructor)) {
             yield result;

@@ -15,7 +15,9 @@ __exportStar(require("./lib/Store"), exports);
 __exportStar(require("./lib/AliasPiece"), exports);
 __exportStar(require("./lib/AliasStore"), exports);
 __exportStar(require("./lib/errors/LoaderError"), exports);
-__exportStar(require("./lib/strategies/ILoader"), exports);
-__exportStar(require("./lib/strategies/LoadSingle"), exports);
-__exportStar(require("./lib/strategies/LoadMultiple"), exports);
+__exportStar(require("./lib/strategies/filters/IFilter"), exports);
+__exportStar(require("./lib/strategies/filters/LoadJavaScript"), exports);
+__exportStar(require("./lib/strategies/loaders/ILoader"), exports);
+__exportStar(require("./lib/strategies/loaders/LoadSingle"), exports);
+__exportStar(require("./lib/strategies/loaders/LoadMultiple"), exports);
 //# sourceMappingURL=index.js.map
