@@ -7,7 +7,7 @@ exports.Piece = void 0;
 class Piece {
     constructor(context, options = {}) {
         var _a, _b;
-        this.context = context.context;
+        this.context = context.extra;
         this.store = context.store;
         this.path = context.path;
         this.name = (_a = options.name) !== null && _a !== void 0 ? _a : '';

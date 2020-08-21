@@ -7,7 +7,7 @@ export interface PieceContext {
     /**
      * The extra information for the piece.
      */
-    context: unknown;
+    extra: unknown;
     /**
      * The path the piece was loaded from.
      */

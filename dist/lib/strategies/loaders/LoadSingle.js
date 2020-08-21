@@ -17,7 +17,7 @@ exports.LoadSingle = {
             if (Shared_1.isClass(value) && Shared_1.classExtends(value, store.Constructor))
                 return yield value;
         }
-        throw new LoaderError_1.LoaderError('EMPTY_MODULE', 'A compatible class export was not found.');
+        throw new LoaderError_1.LoaderError("EMPTY_MODULE" /* EmptyModule */, 'A compatible class export was not found.');
     }
 };
 //# sourceMappingURL=LoadSingle.js.map

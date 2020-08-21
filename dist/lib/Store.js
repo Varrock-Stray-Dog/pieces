@@ -19,7 +19,7 @@ class Store extends collection_1.default {
         var _a, _b, _c, _d, _e, _f, _g;
         super();
         this.Constructor = constructor;
-        this.paths = (_a = options.paths) !== null && _a !== void 0 ? _a : [];
+        this.paths = new Set((_a = options.paths) !== null && _a !== void 0 ? _a : []);
         this.context = options.context;
         this.filterHook = (_b = options.filterHook) !== null && _b !== void 0 ? _b : LoadJavaScript_1.LoadJavaScript.getNameData.bind(LoadJavaScript_1.LoadJavaScript);
         this.preloadHook = (_c = options.preloadHook) !== null && _c !== void 0 ? _c : ((path) => Promise.resolve().then(() => require(path)));
@@ -27,6 +27,20 @@ class Store extends collection_1.default {
         this.onPostLoad = (_e = options.onPostLoad) !== null && _e !== void 0 ? _e : (() => void 0);
         this.onUnload = (_f = options.onUnload) !== null && _f !== void 0 ? _f : (() => void 0);
         this.onError = (_g = options.onError) !== null && _g !== void 0 ? _g : ((error) => console.error(error));
+    }
+    /**
+     * Registers a directory into the store.
+     * @param path The path to be added.
+     * @example
+     * ```typescript
+     * store
+     *   .registerPath(resolve('commands'))
+     *   .registerPath(resolve('third-party', 'commands'));
+     * ```
+     */
+    registerPath(path) {
+        this.paths.add(path);
+        return this;
     }
     /**
      * Loads a piece or more from a path.
@@ -39,7 +53,7 @@ class Store extends collection_1.default {
             return;
         const options = { name: data.name, enabled: true };
         for await (const Ctor of this.loadHook(this, path)) {
-            yield this.insert(new Ctor({ context: this.context, store: this, path }, options));
+            yield this.insert(new Ctor({ extra: this.context, store: this, path }, options));
         }
     }
     /**
@@ -77,12 +91,12 @@ class Store extends collection_1.default {
         if (typeof name === 'string') {
             const result = this.get(name);
             if (typeof result === 'undefined')
-                throw new LoaderError_1.LoaderError('UNLOADED_PIECE', `The piece '${name}' does not exist.`);
+                throw new LoaderError_1.LoaderError("UNLOADED_PIECE" /* UnloadedPiece */, `The piece '${name}' does not exist.`);
             return result;
         }
         if (name instanceof this.Constructor)
             return name;
-        throw new LoaderError_1.LoaderError('INCORRECT_TYPE', `The piece '${name.name}' is not an instance of '${this.Constructor.name}'.`);
+        throw new LoaderError_1.LoaderError("INCORRECT_TYPE" /* IncorrectType */, `The piece '${name.name}' is not an instance of '${this.Constructor.name}'.`);
     }
     /**
      * Inserts a piece into the store.
@@ -109,7 +123,7 @@ class Store extends collection_1.default {
                 continue;
             try {
                 for await (const Ctor of this.loadHook(this, path)) {
-                    yield new Ctor({ context: this.context, store: this, path }, { name: data.name, enabled: true });
+                    yield new Ctor({ extra: this.context, store: this, path }, { name: data.name, enabled: true });
                 }
             }
             catch (error) {

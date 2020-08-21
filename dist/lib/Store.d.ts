@@ -148,7 +148,7 @@ export interface StoreOptions<T extends Piece, C = unknown> {
  */
 export declare class Store<T extends Piece> extends Collection<string, T> {
     readonly Constructor: Constructor<T>;
-    readonly paths: readonly string[];
+    readonly paths: Set<string>;
     readonly context: unknown;
     readonly filterHook: StoreOptionsFilterHook;
     readonly preloadHook: StoreOptionsPreLoadHook<T>;
@@ -161,6 +161,17 @@ export declare class Store<T extends Piece> extends Collection<string, T> {
      * @param options The options for the store.
      */
     constructor(constructor: Constructor<T>, options?: StoreOptions<T>);
+    /**
+     * Registers a directory into the store.
+     * @param path The path to be added.
+     * @example
+     * ```typescript
+     * store
+     *   .registerPath(resolve('commands'))
+     *   .registerPath(resolve('third-party', 'commands'));
+     * ```
+     */
+    registerPath(path: string): this;
     /**
      * Loads a piece or more from a path.
      * @param path The path of the file to load.

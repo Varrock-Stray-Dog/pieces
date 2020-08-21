@@ -25,7 +25,7 @@ exports.LoadMultiple = {
             }
         }
         if (!yielded) {
-            throw new LoaderError_1.LoaderError('EMPTY_MODULE', 'A compatible class export was not found.');
+            throw new LoaderError_1.LoaderError("EMPTY_MODULE" /* EmptyModule */, 'A compatible class export was not found.');
         }
     }
 };

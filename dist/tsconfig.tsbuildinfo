@@ -207,13 +207,13 @@
         "affectsGlobalScope": false
       },
       "../src/lib/errors/LoaderError.ts": {
-        "version": "f8ddb818c176991f96f3086722868d91c7c5580d3acba6c4275e3a2d097b0b1c",
-        "signature": "fee5348cca38ceb4b1ebefc6e3a21b61ebf673bc2cbf7cb3eff1ea177401858f",
+        "version": "5be6811959846f0e76db5db62fbbd3c2c9f8edcd5a5599131ba2e443209480e3",
+        "signature": "dfa9ca287dac217afd4fd6f8090834b3558a4ef32f9333358214d210cc5ea83c",
         "affectsGlobalScope": false
       },
       "../src/lib/strategies/filters/IFilter.ts": {
-        "version": "36c438a4fbcf04460bebdd66f126600de57a85be11cb0f6d9a99ad60c83ad1f3",
-        "signature": "3bee70dce0583444ea8c8282f251f584b952b4aa2cca23f98a22939bfd1df26f",
+        "version": "1e43253c951bcd6fe690f7e9fbd759023ae39c9c69310e62ed7cf4b5c070c2c8",
+        "signature": "ba060b0cdeb240d55d67d524a51d12c9e00198c7f38c2a7f44107d026e992be8",
         "affectsGlobalScope": false
       },
       "../src/lib/strategies/filters/LoadJavaScript.ts": {
@@ -227,23 +227,23 @@
         "affectsGlobalScope": false
       },
       "../src/lib/strategies/loaders/ILoader.ts": {
-        "version": "6984229c7d890f8f4e843e494ac76ae913d6ef5479f480e24e68df3e28c5fbcd",
-        "signature": "295307469eb371a1aed628a9446a58fe570052e7ee98082aa705fc33e31a9224",
+        "version": "ed675bab66f7018e41fc5ee816023c38f07461f70e5f431b363bb4befd245bc6",
+        "signature": "d4e7342a73bc536c4ac46a3b781d19ec6970ad822bda6ebf86ae1a6687185b6e",
         "affectsGlobalScope": false
       },
       "../src/lib/strategies/loaders/LoadSingle.ts": {
-        "version": "dcd7a5e062d54eff43d96da48452d6414f675b3b35f911d06355e392e2b45eb9",
+        "version": "c29ce0192b5aaddc359d08f1823b9e968aedef9d0aebb8111d5e12eddd10f0d4",
         "signature": "2ce05593dffce10a2ba27ca79637b3dbe751d19300289b5363da77c2cf029b4d",
         "affectsGlobalScope": false
       },
       "../src/lib/Store.ts": {
-        "version": "d47bd1a45d26eb1dfbaa81368851bfc069b3d8bd2cf9836bb35a094c7f4cfe8f",
-        "signature": "b884f2e1fcba7e5de78e7be38294adbea3be903af50d40741f3b4362f61bd6ce",
+        "version": "1825ffdf6cc1fea73f0fb4f0004e2cbf7555659265f13b90c82d978a9d8b68ce",
+        "signature": "46b91c7f861081ce081d973b2951d498d40f8520e7a8ff92003c35c505c15586",
         "affectsGlobalScope": false
       },
       "../src/lib/Piece.ts": {
-        "version": "453d7eeb4a203d660077e769c0406028b450b0b41c568c0f6736cec0bab7ee6a",
-        "signature": "289aeff3a6cc5bead6b18e9de0a327ce7dcfa2f906d7ada1e608e9063dc9c424",
+        "version": "f87d83df4c5e8eb47be797427731ff0ad24af175fbf7beb1bc0bfd454e007218",
+        "signature": "c3be51fc4b8785f2af097bddaadb5786272e01d01082b1f055082bb68168393a",
         "affectsGlobalScope": false
       },
       "../src/lib/AliasPiece.ts": {
@@ -257,7 +257,7 @@
         "affectsGlobalScope": false
       },
       "../src/lib/strategies/loaders/LoadMultiple.ts": {
-        "version": "eeeac5392c9e1135c84f78836f4791dd88f3ace436f3c7bfff3ba36da523f4c2",
+        "version": "abafd8228d27c2f0e2dc23038d8cb14fed3255b2a0b73bdf2534469c09f66d42",
         "signature": "e05fc036c5829183c29f9a1bbcb065250b662ee79e39ca2edcb712f0b055c1c1",
         "affectsGlobalScope": false
       },
