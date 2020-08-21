@@ -227,8 +227,8 @@
         "affectsGlobalScope": false
       },
       "../src/lib/strategies/loaders/ILoader.ts": {
-        "version": "ed675bab66f7018e41fc5ee816023c38f07461f70e5f431b363bb4befd245bc6",
-        "signature": "d4e7342a73bc536c4ac46a3b781d19ec6970ad822bda6ebf86ae1a6687185b6e",
+        "version": "60c7538d2e3c0a414cd42304fc72cfa6eeb5f3ecc8382de35a05c18171e81af4",
+        "signature": "7ab6fa8f8fb219183631c55780d33db7bde09716b9638191192ec44bf879c5c6",
         "affectsGlobalScope": false
       },
       "../src/lib/strategies/loaders/LoadSingle.ts": {
@@ -237,13 +237,13 @@
         "affectsGlobalScope": false
       },
       "../src/lib/Store.ts": {
-        "version": "1825ffdf6cc1fea73f0fb4f0004e2cbf7555659265f13b90c82d978a9d8b68ce",
-        "signature": "46b91c7f861081ce081d973b2951d498d40f8520e7a8ff92003c35c505c15586",
+        "version": "5e2d06e66e6111a3a57b7489261d39072cfb50d1eaf89704f8f2d59eba7d6d87",
+        "signature": "4903ffababf509b15272158914b1f63665cde22d048629f813d5a97c25769163",
         "affectsGlobalScope": false
       },
       "../src/lib/Piece.ts": {
-        "version": "f87d83df4c5e8eb47be797427731ff0ad24af175fbf7beb1bc0bfd454e007218",
-        "signature": "c3be51fc4b8785f2af097bddaadb5786272e01d01082b1f055082bb68168393a",
+        "version": "8fe801eadc297fe7e115ded939d97d5cca48d2dae33266019ea73a76651661df",
+        "signature": "19859f7897548c06ccad8940d0b9e6aa42898cb091105e0ba07dcb43aac5834b",
         "affectsGlobalScope": false
       },
       "../src/lib/AliasPiece.ts": {

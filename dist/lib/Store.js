@@ -20,7 +20,6 @@ class Store extends collection_1.default {
         super();
         this.Constructor = constructor;
         this.paths = new Set((_a = options.paths) !== null && _a !== void 0 ? _a : []);
-        this.context = options.context;
         this.filterHook = (_b = options.filterHook) !== null && _b !== void 0 ? _b : LoadJavaScript_1.LoadJavaScript.getNameData.bind(LoadJavaScript_1.LoadJavaScript);
         this.preloadHook = (_c = options.preloadHook) !== null && _c !== void 0 ? _c : ((path) => Promise.resolve().then(() => require(path)));
         this.loadHook = (_d = options.loadHook) !== null && _d !== void 0 ? _d : LoadSingle_1.LoadSingle.load.bind(LoadSingle_1.LoadSingle);
@@ -51,9 +50,8 @@ class Store extends collection_1.default {
         const data = this.filterHook(path);
         if (data === null)
             return;
-        const options = { name: data.name, enabled: true };
         for await (const Ctor of this.loadHook(this, path)) {
-            yield this.insert(new Ctor({ extra: this.context, store: this, path }, options));
+            yield this.insert(this.construct(Ctor, path, data.name));
         }
     }
     /**
@@ -99,6 +97,12 @@ class Store extends collection_1.default {
         throw new LoaderError_1.LoaderError("INCORRECT_TYPE" /* IncorrectType */, `The piece '${name.name}' is not an instance of '${this.Constructor.name}'.`);
     }
     /**
+     * The extras to be passed to the constructor of all pieces.
+     */
+    get extras() {
+        return {};
+    }
+    /**
      * Inserts a piece into the store.
      * @param piece The piece to be inserted into the store.
      * @return The inserted piece.
@@ -109,6 +113,15 @@ class Store extends collection_1.default {
         this.set(piece.name, piece);
         this.onPostLoad(this, piece);
         return piece;
+    }
+    /**
+     * Constructs a [[Piece]] instance.
+     * @param Ctor The [[Piece]]'s constructor used to build the instance.
+     * @param path The path of the file.
+     * @param name The name of the piece.
+     */
+    construct(Ctor, path, name) {
+        return new Ctor({ extras: this.extras, store: this, path }, { name, enabled: true });
     }
     /**
      * Loads a directory into the store.
@@ -123,7 +136,7 @@ class Store extends collection_1.default {
                 continue;
             try {
                 for await (const Ctor of this.loadHook(this, path)) {
-                    yield new Ctor({ extra: this.context, store: this, path }, { name: data.name, enabled: true });
+                    yield this.construct(Ctor, path, data.name);
                 }
             }
             catch (error) {

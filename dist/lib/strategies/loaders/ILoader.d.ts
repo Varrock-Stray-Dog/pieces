@@ -2,9 +2,13 @@ import type { Piece } from '../../Piece';
 import type { Store } from '../../Store';
 import type { Ctor } from '../Shared';
 /**
- * The result from the loader.
+ * Represents an entry from [[ILoaderResult]].
  */
-export declare type ILoaderResult<T extends Piece> = AsyncIterableIterator<Ctor<ConstructorParameters<typeof Piece>, T>>;
+export declare type ILoaderResultEntry<T extends Piece> = Ctor<ConstructorParameters<typeof Piece>, T>;
+/**
+ * Represents the return data from [[ILoader.load]].
+ */
+export declare type ILoaderResult<T extends Piece> = AsyncIterableIterator<ILoaderResultEntry<T>>;
 /**
  * An abstracted loader interface.
  */

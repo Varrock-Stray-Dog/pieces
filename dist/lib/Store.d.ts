@@ -1,7 +1,7 @@
 import Collection from '@discordjs/collection';
-import type { Piece } from './Piece';
+import type { Piece, PieceContextExtras } from './Piece';
 import type { FilterResult } from './strategies/filters/IFilter';
-import type { ILoaderResult } from './strategies/loaders/ILoader';
+import type { ILoaderResult, ILoaderResultEntry } from './strategies/loaders/ILoader';
 /** @private */
 declare type Constructor<T> = new (...args: any[]) => T;
 /** @private */
@@ -149,7 +149,6 @@ export interface StoreOptions<T extends Piece, C = unknown> {
 export declare class Store<T extends Piece> extends Collection<string, T> {
     readonly Constructor: Constructor<T>;
     readonly paths: Set<string>;
-    readonly context: unknown;
     readonly filterHook: StoreOptionsFilterHook;
     readonly preloadHook: StoreOptionsPreLoadHook<T>;
     readonly loadHook: StoreOptionsLoadHook<T>;
@@ -195,11 +194,22 @@ export declare class Store<T extends Piece> extends Collection<string, T> {
      */
     resolve(name: string | T): T;
     /**
+     * The extras to be passed to the constructor of all pieces.
+     */
+    protected get extras(): PieceContextExtras;
+    /**
      * Inserts a piece into the store.
      * @param piece The piece to be inserted into the store.
      * @return The inserted piece.
      */
     protected insert(piece: T): T;
+    /**
+     * Constructs a [[Piece]] instance.
+     * @param Ctor The [[Piece]]'s constructor used to build the instance.
+     * @param path The path of the file.
+     * @param name The name of the piece.
+     */
+    protected construct(Ctor: ILoaderResultEntry<T>, path: string, name: string): T;
     /**
      * Loads a directory into the store.
      * @param directory The directory to load the pieces from.
