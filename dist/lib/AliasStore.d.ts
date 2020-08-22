@@ -19,12 +19,12 @@ export declare class AliasStore<T extends AliasPiece> extends Store<T> {
      * @param name The name of the file to load.
      * @return Returns the piece that was unloaded.
      */
-    unload(name: string | T): T;
+    unload(name: string | T): Promise<T>;
     /**
      * Inserts a piece into the store, and adds all the aliases.
      * @param piece The piece to be inserted into the store.
      * @return The inserted piece.
      */
-    protected insert(piece: T): T;
+    protected insert(piece: T): Promise<T>;
 }
 //# sourceMappingURL=AliasStore.d.ts.map

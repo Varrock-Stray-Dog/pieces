@@ -51,7 +51,7 @@ class Store extends collection_1.default {
         if (data === null)
             return;
         for await (const Ctor of this.loadHook(this, path)) {
-            yield this.insert(this.construct(Ctor, path, data.name));
+            yield await this.insert(this.construct(Ctor, path, data.name));
         }
     }
     /**
@@ -59,10 +59,11 @@ class Store extends collection_1.default {
      * @param name The name of the file to load.
      * @return Returns the piece that was unloaded.
      */
-    unload(name) {
+    async unload(name) {
         const piece = this.resolve(name);
         this.delete(piece.name);
         this.onUnload(this, piece);
+        await piece.onUnload();
         return piece;
     }
     /**
@@ -77,7 +78,7 @@ class Store extends collection_1.default {
         }
         this.clear();
         for (const piece of pieces) {
-            this.insert(piece);
+            await this.insert(piece);
         }
     }
     /**
@@ -107,11 +108,12 @@ class Store extends collection_1.default {
      * @param piece The piece to be inserted into the store.
      * @return The inserted piece.
      */
-    insert(piece) {
+    async insert(piece) {
         if (!piece.enabled)
             return piece;
         this.set(piece.name, piece);
         this.onPostLoad(this, piece);
+        await piece.onLoad();
         return piece;
     }
     /**

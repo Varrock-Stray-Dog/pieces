@@ -2,10 +2,8 @@ import Collection from '@discordjs/collection';
 import type { Piece, PieceContextExtras } from './Piece';
 import type { FilterResult } from './strategies/filters/IFilter';
 import type { ILoaderResult, ILoaderResultEntry } from './strategies/loaders/ILoader';
-/** @private */
-declare type Constructor<T> = new (...args: any[]) => T;
-/** @private */
-declare type Awaited<T> = PromiseLike<T> | T;
+export declare type Constructor<T> = new (...args: any[]) => T;
+export declare type Awaited<T> = PromiseLike<T> | T;
 /**
  * The error handler.
  * @example
@@ -182,7 +180,7 @@ export declare class Store<T extends Piece> extends Collection<string, T> {
      * @param name The name of the file to load.
      * @return Returns the piece that was unloaded.
      */
-    unload(name: string | T): T;
+    unload(name: string | T): Promise<T>;
     /**
      * Loads all pieces from all directories specified by [[paths]].
      */
@@ -202,7 +200,7 @@ export declare class Store<T extends Piece> extends Collection<string, T> {
      * @param piece The piece to be inserted into the store.
      * @return The inserted piece.
      */
-    protected insert(piece: T): T;
+    protected insert(piece: T): Promise<T>;
     /**
      * Constructs a [[Piece]] instance.
      * @param Ctor The [[Piece]]'s constructor used to build the instance.
@@ -223,5 +221,4 @@ export declare class Store<T extends Piece> extends Collection<string, T> {
      */
     private walk;
 }
-export {};
 //# sourceMappingURL=Store.d.ts.map

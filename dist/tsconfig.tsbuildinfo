@@ -237,13 +237,13 @@
         "affectsGlobalScope": false
       },
       "../src/lib/Store.ts": {
-        "version": "8d4f8495f8fd805b69fa1e7e10233a18dff013b02c132429a2de3f03eea2a694",
-        "signature": "4903ffababf509b15272158914b1f63665cde22d048629f813d5a97c25769163",
+        "version": "45201a7753d132dc207feaf1d80844c5db5b5fbc7d6ee03f17ed16058426aecf",
+        "signature": "3d74691df70f308ec32986f54e6d0305244d91f48f2389495ebad079c45441fc",
         "affectsGlobalScope": false
       },
       "../src/lib/Piece.ts": {
-        "version": "0e718958bd891d59b94a529ab636983c4cf60efb715a0c6119e76119ace85bd6",
-        "signature": "289de792968cd05c7beb0670eb4ef871c8f4c475d3d7c2668b24eb0b85eb8f52",
+        "version": "3d5913a7d3608d0c2d50010b2a66d3be2d2d10dd72b376c086e57b46e093277c",
+        "signature": "54de053cacad9db6e64ddcd37e9bcdac569ab4a81f48c59e3c3d42be2ec93b1b",
         "affectsGlobalScope": false
       },
       "../src/lib/AliasPiece.ts": {
@@ -252,8 +252,8 @@
         "affectsGlobalScope": false
       },
       "../src/lib/AliasStore.ts": {
-        "version": "5fb5db5870fb500de76acf107451b898ae121bc34cdbf5f2d16ad5230bd2a4f4",
-        "signature": "694bdb604057bb447930e62901a335e5d67098c0257ce31c1c2a1a118b29c0af",
+        "version": "705a3b824006d7e47f07b8d3fa926b27a19a61920625729a1f9b2c5d06447fa6",
+        "signature": "2b5a4c62d5ef574be422824782eeb7b5910e14b3754d7c7ae3075c66466df283",
         "affectsGlobalScope": false
       },
       "../src/lib/strategies/loaders/LoadMultiple.ts": {

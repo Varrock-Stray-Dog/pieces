@@ -1,4 +1,4 @@
-import type { Store } from './Store';
+import type { Awaited, Store } from './Store';
 /**
  * Represents the data from [[PieceContext.extras]] and may be used for dependency injection.
  * Libraries can provide strict typing by augmenting this module, check
@@ -65,6 +65,16 @@ export declare class Piece {
      */
     enabled: boolean;
     constructor(context: PieceContext, options?: PieceOptions);
+    /**
+     * Per-piece listener that is called when the piece is loaded into the store.
+     * Useful to set-up asynchronous initialization tasks.
+     */
+    onLoad(): Awaited<unknown>;
+    /**
+     * Per-piece listener that is called when the piece is unloaded from the store.
+     * Useful to set-up clean-up tasks.
+     */
+    onUnload(): Awaited<unknown>;
     toJSON(): Record<string, any>;
 }
 //# sourceMappingURL=Piece.d.ts.map
