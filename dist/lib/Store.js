@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Store = void 0;
 const collection_1 = require("@discordjs/collection");
-const promises_1 = require("fs/promises");
+const fs_1 = require("fs");
 const path_1 = require("path");
 const LoaderError_1 = require("./errors/LoaderError");
 const LoadJavaScript_1 = require("./strategies/filters/LoadJavaScript");
@@ -150,7 +150,7 @@ class Store extends collection_1.default {
      * @return An async iterator that yields the modules to be processed and loaded into the store.
      */
     async *walk(path) {
-        const dir = await promises_1.opendir(path);
+        const dir = await fs_1.promises.opendir(path);
         for await (const item of dir) {
             if (item.isFile())
                 yield item;

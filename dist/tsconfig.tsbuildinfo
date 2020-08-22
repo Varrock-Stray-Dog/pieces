@@ -237,7 +237,7 @@
         "affectsGlobalScope": false
       },
       "../src/lib/Store.ts": {
-        "version": "5e2d06e66e6111a3a57b7489261d39072cfb50d1eaf89704f8f2d59eba7d6d87",
+        "version": "8d4f8495f8fd805b69fa1e7e10233a18dff013b02c132429a2de3f03eea2a694",
         "signature": "4903ffababf509b15272158914b1f63665cde22d048629f813d5a97c25769163",
         "affectsGlobalScope": false
       },
@@ -1521,7 +1521,6 @@
       "../src/lib/Store.ts": [
         "../node_modules/@discordjs/collection/dist/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/fs/promises.d.ts",
         "../node_modules/@types/node/path.d.ts",
         "../node_modules/@types/node/process.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
