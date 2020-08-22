@@ -11,6 +11,12 @@ class AliasPiece extends Piece_1.Piece {
         super(context, options);
         this.aliases = (_a = options.aliases) !== null && _a !== void 0 ? _a : [];
     }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            aliases: this.aliases.slice()
+        };
+    }
 }
 exports.AliasPiece = AliasPiece;
 //# sourceMappingURL=AliasPiece.js.map

@@ -65,5 +65,10 @@ export declare class Piece {
      */
     enabled: boolean;
     constructor(context: PieceContext, options?: PieceOptions);
+    toJSON(): {
+        path: string;
+        name: string;
+        enabled: boolean;
+    };
 }
 //# sourceMappingURL=Piece.d.ts.map

@@ -13,6 +13,13 @@ class Piece {
         this.name = (_a = options.name) !== null && _a !== void 0 ? _a : '';
         this.enabled = (_b = options.enabled) !== null && _b !== void 0 ? _b : true;
     }
+    toJSON() {
+        return {
+            path: this.path,
+            name: this.name,
+            enabled: this.enabled
+        };
+    }
 }
 exports.Piece = Piece;
 //# sourceMappingURL=Piece.js.map

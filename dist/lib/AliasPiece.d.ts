@@ -15,5 +15,11 @@ export declare class AliasPiece extends Piece {
      */
     readonly aliases: readonly string[];
     constructor(context: PieceContext, options?: AliasPieceOptions);
+    toJSON(): {
+        aliases: string[];
+        path: string;
+        name: string;
+        enabled: boolean;
+    };
 }
 //# sourceMappingURL=AliasPiece.d.ts.map
