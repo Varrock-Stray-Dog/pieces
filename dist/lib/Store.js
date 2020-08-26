@@ -123,7 +123,7 @@ class Store extends collection_1.default {
      * @param name The name of the piece.
      */
     construct(Ctor, path, name) {
-        return new Ctor({ extras: this.extras, store: this, path }, { name, enabled: true });
+        return new Ctor({ extras: this.extras, store: this, path, name }, { name, enabled: true });
     }
     /**
      * Loads a directory into the store.

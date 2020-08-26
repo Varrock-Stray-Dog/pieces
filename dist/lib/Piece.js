@@ -10,7 +10,7 @@ class Piece {
         this.extras = context.extras;
         this.store = context.store;
         this.path = context.path;
-        this.name = (_a = options.name) !== null && _a !== void 0 ? _a : '';
+        this.name = (_a = options.name) !== null && _a !== void 0 ? _a : context.name;
         this.enabled = (_b = options.enabled) !== null && _b !== void 0 ? _b : true;
     }
     /**

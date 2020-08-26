@@ -242,13 +242,13 @@
         "affectsGlobalScope": false
       },
       "../src/lib/Store.ts": {
-        "version": "e14d3555e980cf5c2e41a8f8a7ed7434233c4b4772f8d1d79ebc394f5fe10e2d",
+        "version": "f5339bd99cce2059a3ebcd7fe0415f6dd47d172e746128393cd2b25e4305312c",
         "signature": "3d74691df70f308ec32986f54e6d0305244d91f48f2389495ebad079c45441fc",
         "affectsGlobalScope": false
       },
       "../src/lib/Piece.ts": {
-        "version": "3d5913a7d3608d0c2d50010b2a66d3be2d2d10dd72b376c086e57b46e093277c",
-        "signature": "54de053cacad9db6e64ddcd37e9bcdac569ab4a81f48c59e3c3d42be2ec93b1b",
+        "version": "f8ab917e9f02e247a4ddfe845d8729f8ef0d30dc209ad30f3658ff6b6c90dc60",
+        "signature": "4ef9bda24b2cb0f7882e2cb55eef6a387f42654a8ac8207e22202a26efbf1fc7",
         "affectsGlobalScope": false
       },
       "../src/lib/AliasPiece.ts": {
