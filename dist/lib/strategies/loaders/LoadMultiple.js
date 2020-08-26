@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoadMultiple = void 0;
-const LoaderError_1 = require("../../errors/LoaderError");
+const MissingExportsError_1 = require("../../errors/MissingExportsError");
 const Shared_1 = require("../Shared");
 /**
  * The multi-loader. This loader can load multiple classes from a module
@@ -25,7 +25,7 @@ exports.LoadMultiple = {
             }
         }
         if (!yielded) {
-            throw new LoaderError_1.LoaderError("EMPTY_MODULE" /* EmptyModule */, 'A compatible class export was not found.');
+            throw new MissingExportsError_1.MissingExportsError(path);
         }
     }
 };

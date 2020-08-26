@@ -231,8 +231,13 @@
         "signature": "7ab6fa8f8fb219183631c55780d33db7bde09716b9638191192ec44bf879c5c6",
         "affectsGlobalScope": false
       },
+      "../src/lib/errors/MissingExportsError.ts": {
+        "version": "9d2977e606051645f3e464ec3ead5c248e94bc75ede5caf5c609e975dccee5bd",
+        "signature": "50f04e8654d013809df669d32724b22525f106993d20f3f75eccfde754c3bfd8",
+        "affectsGlobalScope": false
+      },
       "../src/lib/strategies/loaders/LoadSingle.ts": {
-        "version": "c29ce0192b5aaddc359d08f1823b9e968aedef9d0aebb8111d5e12eddd10f0d4",
+        "version": "5672f58d2914fb88f9227b598c63d2984e262baf65177fe785d80787b33eda46",
         "signature": "2ce05593dffce10a2ba27ca79637b3dbe751d19300289b5363da77c2cf029b4d",
         "affectsGlobalScope": false
       },
@@ -257,13 +262,13 @@
         "affectsGlobalScope": false
       },
       "../src/lib/strategies/loaders/LoadMultiple.ts": {
-        "version": "abafd8228d27c2f0e2dc23038d8cb14fed3255b2a0b73bdf2534469c09f66d42",
+        "version": "1464c6f1a59826bff4c09cb23213e9e8fb54011541cf88c8704c12bd38e8a265",
         "signature": "e05fc036c5829183c29f9a1bbcb065250b662ee79e39ca2edcb712f0b055c1c1",
         "affectsGlobalScope": false
       },
       "../src/index.ts": {
-        "version": "07e894eb802905b178fa82c62d9cfcb25477cf98f59de3fce053fa36a8bd6870",
-        "signature": "e41c42c374ff24f7a63cacfd7cb046fd43de4e7cbacf1fc9c46b76a5df1f496f",
+        "version": "9d312e5945315fc6a23eec8a5f1323d5afd0fd48240040bb32a5dfda80cf44cd",
+        "signature": "47b9e7168286487757f5d7a016cd669080201bcc054e8a7b9402fbaf250f68eb",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/color-name/index.d.ts": {
@@ -1483,6 +1488,7 @@
         "../src/lib/Piece.ts",
         "../src/lib/Store.ts",
         "../src/lib/errors/LoaderError.ts",
+        "../src/lib/errors/MissingExportsError.ts",
         "../src/lib/strategies/filters/IFilter.ts",
         "../src/lib/strategies/filters/LoadJavaScript.ts",
         "../src/lib/strategies/loaders/ILoader.ts",
@@ -1542,6 +1548,15 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../src/lib/errors/MissingExportsError.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/process.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/process.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/lib/errors/LoaderError.ts"
+      ],
       "../src/lib/strategies/Shared.ts": [
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/process.d.ts",
@@ -1586,7 +1601,7 @@
         "../node_modules/@types/node/ts3.2/process.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
-        "../src/lib/errors/LoaderError.ts",
+        "../src/lib/errors/MissingExportsError.ts",
         "../src/lib/strategies/Shared.ts",
         "../src/lib/strategies/loaders/ILoader.ts"
       ],
@@ -1597,7 +1612,7 @@
         "../node_modules/@types/node/ts3.2/process.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
-        "../src/lib/errors/LoaderError.ts",
+        "../src/lib/errors/MissingExportsError.ts",
         "../src/lib/strategies/Shared.ts",
         "../src/lib/strategies/loaders/ILoader.ts"
       ]
@@ -2495,6 +2510,7 @@
         "../src/lib/Piece.ts",
         "../src/lib/Store.ts",
         "../src/lib/errors/LoaderError.ts",
+        "../src/lib/errors/MissingExportsError.ts",
         "../src/lib/strategies/filters/IFilter.ts",
         "../src/lib/strategies/filters/LoadJavaScript.ts",
         "../src/lib/strategies/loaders/ILoader.ts",
@@ -2517,6 +2533,9 @@
         "../src/lib/Piece.ts",
         "../src/lib/strategies/filters/IFilter.ts",
         "../src/lib/strategies/loaders/ILoader.ts"
+      ],
+      "../src/lib/errors/MissingExportsError.ts": [
+        "../src/lib/errors/LoaderError.ts"
       ],
       "../src/lib/strategies/filters/LoadJavaScript.ts": [
         "../src/lib/strategies/filters/IFilter.ts"
@@ -2639,6 +2658,7 @@
       "../src/lib/Piece.ts",
       "../src/lib/Store.ts",
       "../src/lib/errors/LoaderError.ts",
+      "../src/lib/errors/MissingExportsError.ts",
       "../src/lib/strategies/Shared.ts",
       "../src/lib/strategies/filters/IFilter.ts",
       "../src/lib/strategies/filters/LoadJavaScript.ts",

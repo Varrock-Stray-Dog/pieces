@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoadSingle = void 0;
-const LoaderError_1 = require("../../errors/LoaderError");
+const MissingExportsError_1 = require("../../errors/MissingExportsError");
 const Shared_1 = require("../Shared");
 /**
  * The single loader. This loader is the default and returns the first loaded class.
@@ -17,7 +17,7 @@ exports.LoadSingle = {
             if (Shared_1.isClass(value) && Shared_1.classExtends(value, store.Constructor))
                 return yield value;
         }
-        throw new LoaderError_1.LoaderError("EMPTY_MODULE" /* EmptyModule */, 'A compatible class export was not found.');
+        throw new MissingExportsError_1.MissingExportsError(path);
     }
 };
 //# sourceMappingURL=LoadSingle.js.map
