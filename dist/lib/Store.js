@@ -132,17 +132,16 @@ class Store extends collection_1.default {
      */
     async *loadPath(directory) {
         for await (const child of this.walk(directory)) {
-            const path = path_1.join(directory, child.name);
-            const data = this.filterHook(path);
+            const data = this.filterHook(child);
             if (data === null)
                 continue;
             try {
-                for await (const Ctor of this.loadHook(this, path)) {
-                    yield this.construct(Ctor, path, data.name);
+                for await (const Ctor of this.loadHook(this, child)) {
+                    yield this.construct(Ctor, child, data.name);
                 }
             }
             catch (error) {
-                this.onError(error, path);
+                this.onError(error, child);
             }
         }
     }
@@ -155,7 +154,7 @@ class Store extends collection_1.default {
         const dir = await fs_1.promises.opendir(path);
         for await (const item of dir) {
             if (item.isFile())
-                yield item;
+                yield path_1.join(dir.path, item.name);
             else if (item.isDirectory())
                 yield* this.walk(path_1.join(dir.path, item.name));
         }
