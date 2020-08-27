@@ -242,8 +242,8 @@
         "affectsGlobalScope": false
       },
       "../src/lib/Store.ts": {
-        "version": "b91ca0ffa867116cd12a0ae96f086889122ca6267affd479d8f31e5d637873bc",
-        "signature": "3d74691df70f308ec32986f54e6d0305244d91f48f2389495ebad079c45441fc",
+        "version": "78a829496ed0debee9d68e77b0025d438709e98521ab2904591f12cac1b4d042",
+        "signature": "7c094a08113cee125c9cb2a226cfd5075a7b893e54e4333f61bb6a75e7b9529f",
         "affectsGlobalScope": false
       },
       "../src/lib/Piece.ts": {

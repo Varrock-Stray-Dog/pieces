@@ -15,10 +15,11 @@ class Store extends collection_1.default {
      * @param constructor The piece constructor this store loads.
      * @param options The options for the store.
      */
-    constructor(constructor, options = {}) {
+    constructor(constructor, options) {
         var _a, _b, _c, _d, _e, _f, _g;
         super();
         this.Constructor = constructor;
+        this.name = options.name;
         this.paths = new Set((_a = options.paths) !== null && _a !== void 0 ? _a : []);
         this.filterHook = (_b = options.filterHook) !== null && _b !== void 0 ? _b : LoadJavaScript_1.LoadJavaScript.getNameData.bind(LoadJavaScript_1.LoadJavaScript);
         this.preloadHook = (_c = options.preloadHook) !== null && _c !== void 0 ? _c : ((path) => Promise.resolve().then(() => require(path)));

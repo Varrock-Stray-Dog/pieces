@@ -103,6 +103,10 @@ export interface StoreOptionsUnLoadHandler<T extends Piece> {
  */
 export interface StoreOptions<T extends Piece, C = unknown> {
     /**
+     * The name for this store.
+     */
+    readonly name: string;
+    /**
      * The paths to load pieces from, should be absolute.
      */
     readonly paths?: readonly string[];
@@ -146,6 +150,7 @@ export interface StoreOptions<T extends Piece, C = unknown> {
  */
 export declare class Store<T extends Piece> extends Collection<string, T> {
     readonly Constructor: Constructor<T>;
+    readonly name: string;
     readonly paths: Set<string>;
     readonly filterHook: StoreOptionsFilterHook;
     readonly preloadHook: StoreOptionsPreLoadHook<T>;
@@ -157,7 +162,7 @@ export declare class Store<T extends Piece> extends Collection<string, T> {
      * @param constructor The piece constructor this store loads.
      * @param options The options for the store.
      */
-    constructor(constructor: Constructor<T>, options?: StoreOptions<T>);
+    constructor(constructor: Constructor<T>, options: StoreOptions<T>);
     /**
      * Registers a directory into the store.
      * @param path The path to be added.
