@@ -151,12 +151,21 @@ class Store extends collection_1.default {
      * @return An async iterator that yields the modules to be processed and loaded into the store.
      */
     async *walk(path) {
-        const dir = await fs_1.promises.opendir(path);
-        for await (const item of dir) {
-            if (item.isFile())
-                yield path_1.join(dir.path, item.name);
-            else if (item.isDirectory())
-                yield* this.walk(path_1.join(dir.path, item.name));
+        try {
+            const dir = await fs_1.promises.opendir(path);
+            for await (const item of dir) {
+                if (item.isFile())
+                    yield path_1.join(dir.path, item.name);
+                else if (item.isDirectory())
+                    yield* this.walk(path_1.join(dir.path, item.name));
+            }
+        }
+        catch (error) {
+            // Specifically ignore ENOENT, which is commonly raised by fs operations
+            // to indicate that a component of the specified pathname does not exist.
+            // No entity (file or directory) could be found by the given path.
+            if (error.code !== 'ENOENT')
+                this.onError(error, path);
         }
     }
 }
