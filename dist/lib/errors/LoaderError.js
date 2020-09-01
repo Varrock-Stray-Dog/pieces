@@ -13,6 +13,15 @@ var LoaderErrorType;
 class LoaderError extends Error {
     constructor(type, message) {
         super(message);
+        /**
+         * The type of the error that was thrown.
+         */
+        Object.defineProperty(this, "type", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.type = type;
     }
 }

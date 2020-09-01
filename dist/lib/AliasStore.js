@@ -1,7 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AliasStore = void 0;
-const collection_1 = require("@discordjs/collection");
+const collection_1 = __importDefault(require("@discordjs/collection"));
 const Store_1 = require("./Store");
 /**
  * The store class which contains [[AliasPiece]]s.
@@ -12,7 +15,12 @@ class AliasStore extends Store_1.Store {
         /**
          * The aliases referencing to pieces.
          */
-        this.aliases = new collection_1.default();
+        Object.defineProperty(this, "aliases", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: new collection_1.default()
+        });
     }
     /**
      * Looks up the name by the store, falling back to an alias lookup.

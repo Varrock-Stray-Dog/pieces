@@ -8,6 +8,15 @@ const LoaderError_1 = require("./LoaderError");
 class MissingExportsError extends LoaderError_1.LoaderError {
     constructor(path) {
         super("EMPTY_MODULE" /* EmptyModule */, 'A compatible class export was not found.');
+        /**
+         * The path of the module that did not have exports.
+         */
+        Object.defineProperty(this, "path", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.path = path;
     }
 }

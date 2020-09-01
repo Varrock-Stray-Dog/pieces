@@ -286,6 +286,11 @@
         "signature": "ecdf947a5111318568ba99f2a87b8498382d8871207f1bc6271ff3b9536a2448",
         "affectsGlobalScope": false
       },
+      "../node_modules/@types/minimatch/index.d.ts": {
+        "version": "1d1e6bd176eee5970968423d7e215bfd66828b6db8d54d17afec05a831322633",
+        "signature": "1d1e6bd176eee5970968423d7e215bfd66828b6db8d54d17afec05a831322633",
+        "affectsGlobalScope": false
+      },
       "../node_modules/@types/minimist/index.d.ts": {
         "version": "3602dfff3072caea42f23a9b63fb34a7b0c95a62b93ce2add5fe6b159447845e",
         "signature": "3602dfff3072caea42f23a9b63fb34a7b0c95a62b93ce2add5fe6b159447845e",
@@ -297,8 +302,8 @@
         "affectsGlobalScope": true
       },
       "../node_modules/@types/node/async_hooks.d.ts": {
-        "version": "4ed9f71ddbb5753771ee391f64297078a88f7dfd1480646dcf08c31395778682",
-        "signature": "4ed9f71ddbb5753771ee391f64297078a88f7dfd1480646dcf08c31395778682",
+        "version": "93a45c42b3b0d24b09a0303b987407e22e13adab7d2e49f3bd7332ca30afcf82",
+        "signature": "93a45c42b3b0d24b09a0303b987407e22e13adab7d2e49f3bd7332ca30afcf82",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/node/buffer.d.ts": {
@@ -407,8 +412,8 @@
         "affectsGlobalScope": false
       },
       "../node_modules/@types/node/process.d.ts": {
-        "version": "6eaee45c02a226f96d34e0c6a7542873d0160af179bbf9ead42e05f6fc36f9e5",
-        "signature": "6eaee45c02a226f96d34e0c6a7542873d0160af179bbf9ead42e05f6fc36f9e5",
+        "version": "3b421841e978ea425f634dcef9093890a6f2c245e49164101e970acd534972a8",
+        "signature": "3b421841e978ea425f634dcef9093890a6f2c245e49164101e970acd534972a8",
         "affectsGlobalScope": true
       },
       "../node_modules/@types/node/punycode.d.ts": {
@@ -565,28 +570,35 @@
     "options": {
       "allowSyntheticDefaultImports": true,
       "alwaysStrict": true,
+      "declaration": true,
+      "declarationMap": true,
       "emitDecoratorMetadata": true,
+      "esModuleInterop": true,
       "experimentalDecorators": true,
+      "forceConsistentCasingInFileNames": true,
+      "importsNotUsedAsValues": 2,
       "incremental": true,
       "lib": [
         "lib.esnext.d.ts"
       ],
       "module": 1,
       "moduleResolution": 2,
+      "newLine": 1,
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitReturns": true,
       "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "preserveConstEnums": true,
       "pretty": false,
+      "removeComments": false,
       "resolveJsonModule": true,
       "sourceMap": true,
       "strict": true,
       "target": 6,
-      "declaration": true,
-      "declarationMap": true,
-      "removeComments": false,
-      "importsNotUsedAsValues": 2,
+      "useDefineForClassFields": true,
       "rootDir": "../src",
       "outDir": "./",
       "composite": true,
-      "preserveConstEnums": true,
       "configFilePath": "../src/tsconfig.json"
     },
     "referencedMap": {
@@ -615,6 +627,14 @@
         "../node_modules/@types/node/util.d.ts"
       ],
       "../node_modules/@types/json-schema/index.d.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/process.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/process.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@types/minimatch/index.d.ts": [
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/process.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -1650,6 +1670,14 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../node_modules/@types/minimatch/index.d.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/process.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/process.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
       "../node_modules/@types/minimist/index.d.ts": [
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/process.d.ts",
@@ -2557,6 +2585,7 @@
       "../node_modules/@types/color-name/index.d.ts",
       "../node_modules/@types/eslint-visitor-keys/index.d.ts",
       "../node_modules/@types/json-schema/index.d.ts",
+      "../node_modules/@types/minimatch/index.d.ts",
       "../node_modules/@types/minimist/index.d.ts",
       "../node_modules/@types/node/async_hooks.d.ts",
       "../node_modules/@types/node/base.d.ts",

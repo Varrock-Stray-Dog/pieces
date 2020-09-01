@@ -1,7 +1,29 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Store = void 0;
-const collection_1 = require("@discordjs/collection");
+const collection_1 = __importDefault(require("@discordjs/collection"));
 const fs_1 = require("fs");
 const path_1 = require("path");
 const LoaderError_1 = require("./errors/LoaderError");
@@ -18,11 +40,65 @@ class Store extends collection_1.default {
     constructor(constructor, options) {
         var _a, _b, _c, _d, _e, _f, _g;
         super();
+        Object.defineProperty(this, "Constructor", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "name", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "paths", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "filterHook", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "preloadHook", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "loadHook", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "onPostLoad", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "onUnload", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "onError", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.Constructor = constructor;
         this.name = options.name;
         this.paths = new Set((_a = options.paths) !== null && _a !== void 0 ? _a : []);
         this.filterHook = (_b = options.filterHook) !== null && _b !== void 0 ? _b : LoadJavaScript_1.LoadJavaScript.getNameData.bind(LoadJavaScript_1.LoadJavaScript);
-        this.preloadHook = (_c = options.preloadHook) !== null && _c !== void 0 ? _c : ((path) => Promise.resolve().then(() => require(path)));
+        this.preloadHook = (_c = options.preloadHook) !== null && _c !== void 0 ? _c : ((path) => Promise.resolve().then(() => __importStar(require(path))));
         this.loadHook = (_d = options.loadHook) !== null && _d !== void 0 ? _d : LoadSingle_1.LoadSingle.load.bind(LoadSingle_1.LoadSingle);
         this.onPostLoad = (_e = options.onPostLoad) !== null && _e !== void 0 ? _e : (() => void 0);
         this.onUnload = (_f = options.onUnload) !== null && _f !== void 0 ? _f : (() => void 0);

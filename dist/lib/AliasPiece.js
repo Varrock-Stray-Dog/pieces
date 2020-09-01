@@ -9,6 +9,15 @@ class AliasPiece extends Piece_1.Piece {
     constructor(context, options = {}) {
         var _a;
         super(context, options);
+        /**
+         * The aliases for the piece.
+         */
+        Object.defineProperty(this, "aliases", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.aliases = (_a = options.aliases) !== null && _a !== void 0 ? _a : [];
     }
     toJSON() {
