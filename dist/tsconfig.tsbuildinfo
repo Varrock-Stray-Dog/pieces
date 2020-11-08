@@ -1123,5 +1123,5 @@
       "../src/lib/strategies/loaders/LoadSingle.ts"
     ]
   },
-  "version": "4.0.3"
+  "version": "4.0.5"
 }
