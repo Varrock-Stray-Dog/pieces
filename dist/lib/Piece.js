@@ -72,6 +72,13 @@ class Piece {
     onUnload() {
         return undefined;
     }
+    /**
+     * Disables the piece and removes it from its store
+     */
+    async disable() {
+        await this.store.unload(this.name);
+        this.enabled = false;
+    }
     toJSON() {
         return {
             path: this.path,

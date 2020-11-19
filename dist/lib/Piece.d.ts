@@ -79,6 +79,10 @@ export declare class Piece {
      * Useful to set-up clean-up tasks.
      */
     onUnload(): Awaited<unknown>;
+    /**
+     * Disables the piece and removes it from its store
+     */
+    disable(): Promise<void>;
     toJSON(): Record<string, any>;
 }
 //# sourceMappingURL=Piece.d.ts.map

@@ -247,8 +247,8 @@
         "affectsGlobalScope": false
       },
       "../src/lib/Piece.ts": {
-        "version": "f8ab917e9f02e247a4ddfe845d8729f8ef0d30dc209ad30f3658ff6b6c90dc60",
-        "signature": "4ef9bda24b2cb0f7882e2cb55eef6a387f42654a8ac8207e22202a26efbf1fc7",
+        "version": "505e50b028d2ae0c068634ec69242797874321c65756772058d828c59012af69",
+        "signature": "99b28505795f58b0ad7923bf8faccc33e6c8ee4798ae1cabc2da95dd57bc6d80",
         "affectsGlobalScope": false
       },
       "../src/lib/AliasPiece.ts": {
