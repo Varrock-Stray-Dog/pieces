@@ -91,9 +91,11 @@ class Store extends collection_1.default {
      */
     async unload(name) {
         const piece = this.resolve(name);
-        this.delete(piece.name);
+        // Unload piece:
         this.strategy.onUnload(this, piece);
         await piece.onUnload();
+        // Remove from cache and return it:
+        this.delete(piece.name);
         return piece;
     }
     /**
@@ -135,13 +137,15 @@ class Store extends collection_1.default {
     async insert(piece) {
         if (!piece.enabled)
             return piece;
+        // Load piece:
+        this.strategy.onPostLoad(this, piece);
+        await piece.onLoad();
+        // Unload existing piece, if any:
         const previous = super.get(piece.name);
         if (previous)
             await this.unload(previous);
-        // Set the piece, call post-load, and call the piece's load:
+        // Set the new piece and return it:
         this.set(piece.name, piece);
-        this.strategy.onPostLoad(this, piece);
-        await piece.onLoad();
         return piece;
     }
     /**
