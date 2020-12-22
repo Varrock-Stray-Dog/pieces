@@ -1,23 +1,4 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -27,8 +8,7 @@ const collection_1 = __importDefault(require("@discordjs/collection"));
 const fs_1 = require("fs");
 const path_1 = require("path");
 const LoaderError_1 = require("./errors/LoaderError");
-const LoadJavaScript_1 = require("./strategies/filters/LoadJavaScript");
-const LoadSingle_1 = require("./strategies/loaders/LoadSingle");
+const LoaderStrategy_1 = require("./strategies/LoaderStrategy");
 /**
  * The store class which contains [[Piece]]s.
  */
@@ -38,7 +18,7 @@ class Store extends collection_1.default {
      * @param options The options for the store.
      */
     constructor(constructor, options) {
-        var _a, _b, _c, _d, _e, _f, _g;
+        var _a, _b, _c;
         super();
         Object.defineProperty(this, "Constructor", {
             enumerable: true,
@@ -58,37 +38,7 @@ class Store extends collection_1.default {
             writable: true,
             value: void 0
         });
-        Object.defineProperty(this, "filterHook", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "preloadHook", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "loadHook", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "onPostLoad", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "onUnload", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "onError", {
+        Object.defineProperty(this, "strategy", {
             enumerable: true,
             configurable: true,
             writable: true,
@@ -97,12 +47,13 @@ class Store extends collection_1.default {
         this.Constructor = constructor;
         this.name = options.name;
         this.paths = new Set((_a = options.paths) !== null && _a !== void 0 ? _a : []);
-        this.filterHook = (_b = options.filterHook) !== null && _b !== void 0 ? _b : LoadJavaScript_1.LoadJavaScript.getNameData.bind(LoadJavaScript_1.LoadJavaScript);
-        this.preloadHook = (_c = options.preloadHook) !== null && _c !== void 0 ? _c : ((path) => Promise.resolve().then(() => __importStar(require(path))));
-        this.loadHook = (_d = options.loadHook) !== null && _d !== void 0 ? _d : LoadSingle_1.LoadSingle.load.bind(LoadSingle_1.LoadSingle);
-        this.onPostLoad = (_e = options.onPostLoad) !== null && _e !== void 0 ? _e : (() => void 0);
-        this.onUnload = (_f = options.onUnload) !== null && _f !== void 0 ? _f : (() => void 0);
-        this.onError = (_g = options.onError) !== null && _g !== void 0 ? _g : ((error) => console.error(error));
+        this.strategy = (_b = options.strategy) !== null && _b !== void 0 ? _b : ((_c = Store.defaultStrategy) !== null && _c !== void 0 ? _c : (Store.defaultStrategy = new LoaderStrategy_1.LoaderStrategy()));
+    }
+    /**
+     * The extras to be used for dependency injection in all pieces. Returns a reference of [[Store.defaultExtras]].
+     */
+    get context() {
+        return Store.injectedContext;
     }
     /**
      * Registers a directory into the store.
@@ -124,11 +75,11 @@ class Store extends collection_1.default {
      * @return An async iterator that yields each one of the loaded pieces.
      */
     async *load(path) {
-        const data = this.filterHook(path);
+        const data = this.strategy.filter(path);
         if (data === null)
             return;
-        for await (const Ctor of this.loadHook(this, path)) {
-            yield await this.insert(this.construct(Ctor, path, data.name));
+        for await (const Ctor of this.strategy.load(this, data)) {
+            yield await this.insert(this.construct(Ctor, path, data.path));
         }
     }
     /**
@@ -139,7 +90,7 @@ class Store extends collection_1.default {
     async unload(name) {
         const piece = this.resolve(name);
         this.delete(piece.name);
-        this.onUnload(this, piece);
+        this.strategy.onUnload(this, piece);
         await piece.onUnload();
         return piece;
     }
@@ -175,12 +126,6 @@ class Store extends collection_1.default {
         throw new LoaderError_1.LoaderError("INCORRECT_TYPE" /* IncorrectType */, `The piece '${name.name}' is not an instance of '${this.Constructor.name}'.`);
     }
     /**
-     * The extras to be passed to the constructor of all pieces.
-     */
-    get extras() {
-        return {};
-    }
-    /**
      * Inserts a piece into the store.
      * @param piece The piece to be inserted into the store.
      * @return The inserted piece.
@@ -189,7 +134,7 @@ class Store extends collection_1.default {
         if (!piece.enabled)
             return piece;
         this.set(piece.name, piece);
-        this.onPostLoad(this, piece);
+        this.strategy.onPostLoad(this, piece);
         await piece.onLoad();
         return piece;
     }
@@ -200,7 +145,7 @@ class Store extends collection_1.default {
      * @param name The name of the piece.
      */
     construct(Ctor, path, name) {
-        return new Ctor({ extras: this.extras, store: this, path, name }, { name, enabled: true });
+        return new Ctor({ store: this, path, name }, { name, enabled: true });
     }
     /**
      * Loads a directory into the store.
@@ -209,16 +154,16 @@ class Store extends collection_1.default {
      */
     async *loadPath(directory) {
         for await (const child of this.walk(directory)) {
-            const data = this.filterHook(child);
+            const data = this.strategy.filter(child);
             if (data === null)
                 continue;
             try {
-                for await (const Ctor of this.loadHook(this, child)) {
-                    yield this.construct(Ctor, child, data.name);
+                for await (const Ctor of this.strategy.load(this, data)) {
+                    yield this.construct(Ctor, child, data.path);
                 }
             }
             catch (error) {
-                this.onError(error, child);
+                this.strategy.onError(error, child);
             }
         }
     }
@@ -242,9 +187,90 @@ class Store extends collection_1.default {
             // to indicate that a component of the specified pathname does not exist.
             // No entity (file or directory) could be found by the given path.
             if (error.code !== 'ENOENT')
-                this.onError(error, path);
+                this.strategy.onError(error, path);
         }
     }
 }
 exports.Store = Store;
+/**
+ * The injected variables that will be accessible to all stores and pieces. To add an extra property, simply mutate
+ * the object to add it, and this will update all stores and pieces simultaneously.
+ *
+ * @example
+ * ```typescript
+ * // Add a reference to the Client:
+ * import { Store } from '(at)sapphire/pieces';
+ *
+ * export class SapphireClient extends Client {
+ *   constructor(options) {
+ *     super(options);
+ *
+ *     Store.injectedContext.client = this;
+ *   }
+ * }
+ *
+ * // Can be placed anywhere in a TypeScript file, for JavaScript projects,
+ * // you can create an `augments.d.ts` and place the code there.
+ * declare module '(at)sapphire/pieces' {
+ *   interface PieceContextExtras {
+ *     client: SapphireClient;
+ *   }
+ * }
+ *
+ * // In any piece, core, plugin, or custom:
+ * export class UserCommand extends Command {
+ *   public run(message, args) {
+ *     // The injected client is available here:
+ *     const { client } = this.context;
+ *
+ *     // ...
+ *   }
+ * }
+ * ```
+ *
+ * @example
+ * ```typescript
+ * // In a plugin's context, e.g. API:
+ * class Api extends Plugin {
+ *   static [postInitialization]() {
+ *     const server = new Server(this);
+ *     Store.injectedContext.server = server;
+ *
+ *     // ...
+ *   }
+ * }
+ *
+ * declare module '(at)sapphire/pieces' {
+ *   interface PieceContextExtras {
+ *     server: Server;
+ *   }
+ * }
+ *
+ * // In any piece, even those that aren't routes nor middlewares:
+ * export class UserRoute extends Route {
+ *   public [methods.POST](message, args) {
+ *     // The injected server is available here:
+ *     const { server } = this.context;
+ *
+ *     // ...
+ *   }
+ * }
+ * ```
+ */
+Object.defineProperty(Store, "injectedContext", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: {}
+});
+/**
+ * The default strategy, defaults to [[LoaderStrategy]], which is constructed on demand when a store is constructed,
+ * when none was set beforehand.
+ */
+Object.defineProperty(Store, "defaultStrategy", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: null
+});
 //# sourceMappingURL=Store.js.map

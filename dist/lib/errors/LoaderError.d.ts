@@ -12,5 +12,6 @@ export declare class LoaderError extends Error {
      */
     readonly type: LoaderErrorType;
     constructor(type: LoaderErrorType, message: string);
+    get name(): string;
 }
 //# sourceMappingURL=LoaderError.d.ts.map

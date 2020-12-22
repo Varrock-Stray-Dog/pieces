@@ -1,4 +1,5 @@
-import type { Awaited, Store } from './Store';
+import type { Store } from './Store';
+import type { Awaited } from './strategies/ILoaderStrategy';
 /**
  * Represents the data from [[PieceContext.extras]] and may be used for dependency injection.
  * Libraries can provide strict typing by augmenting this module, check
@@ -12,10 +13,6 @@ export interface PieceContextExtras extends Record<PropertyKey, unknown> {
  * the piece's path, and the store that loaded it.
  */
 export interface PieceContext {
-    /**
-     * The extra information for the piece.
-     */
-    readonly extras: PieceContextExtras;
     /**
      * The path the module was loaded from.
      */
@@ -49,10 +46,6 @@ export interface PieceOptions {
  */
 export declare class Piece {
     /**
-     * The extra given by the store or by the user.
-     */
-    readonly extras: PieceContextExtras;
-    /**
      * The store that contains the piece.
      */
     readonly store: Store<Piece>;
@@ -69,6 +62,11 @@ export declare class Piece {
      */
     enabled: boolean;
     constructor(context: PieceContext, options?: PieceOptions);
+    /**
+     * The context given by the store.
+     * @see Store.injectedContext
+     */
+    get context(): PieceContextExtras;
     /**
      * Per-piece listener that is called when the piece is loaded into the store.
      * Useful to set-up asynchronous initialization tasks.

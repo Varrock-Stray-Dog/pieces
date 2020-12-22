@@ -24,6 +24,9 @@ class LoaderError extends Error {
         });
         this.type = type;
     }
+    get name() {
+        return `${super.name} [${this.type}]`;
+    }
 }
 exports.LoaderError = LoaderError;
 //# sourceMappingURL=LoaderError.js.map

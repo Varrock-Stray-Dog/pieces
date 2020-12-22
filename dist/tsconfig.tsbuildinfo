@@ -217,18 +217,8 @@
         "affectsGlobalScope": false
       },
       "../src/lib/errors/LoaderError.ts": {
-        "version": "5be6811959846f0e76db5db62fbbd3c2c9f8edcd5a5599131ba2e443209480e3",
-        "signature": "dfa9ca287dac217afd4fd6f8090834b3558a4ef32f9333358214d210cc5ea83c",
-        "affectsGlobalScope": false
-      },
-      "../src/lib/strategies/filters/IFilter.ts": {
-        "version": "1e43253c951bcd6fe690f7e9fbd759023ae39c9c69310e62ed7cf4b5c070c2c8",
-        "signature": "ba060b0cdeb240d55d67d524a51d12c9e00198c7f38c2a7f44107d026e992be8",
-        "affectsGlobalScope": false
-      },
-      "../src/lib/strategies/filters/LoadJavaScript.ts": {
-        "version": "0809dc9b6f47995bbf582c8de21f576577153ce71ce00e867b57625def6701de",
-        "signature": "8c5412b256ed255f9943193f030912cff28cc1d21d8eaffd899ad502edbc8d0b",
+        "version": "c160879d671420d89782bd7b03b0b0d37c6e23c63f46660fca608df46064436f",
+        "signature": "ec9dd9b649d615105e7c2692b1afa80dd5ee9a4e361b5a5b0876a452521fc284",
         "affectsGlobalScope": false
       },
       "../src/lib/strategies/Shared.ts": {
@@ -236,9 +226,9 @@
         "signature": "1a84afff8894517b9e3dd7ea9d52798e9c8c618e301eb060db281b403f5c023a",
         "affectsGlobalScope": false
       },
-      "../src/lib/strategies/loaders/ILoader.ts": {
-        "version": "60c7538d2e3c0a414cd42304fc72cfa6eeb5f3ecc8382de35a05c18171e81af4",
-        "signature": "7ab6fa8f8fb219183631c55780d33db7bde09716b9638191192ec44bf879c5c6",
+      "../src/lib/strategies/ILoaderStrategy.ts": {
+        "version": "246acb8c45788966ae609daf13ed6706efd45d407ffb05ad43ea386749d1545a",
+        "signature": "04128488a459dd2572bb612c82f95f9cb1f5271c67b50ec74fa1b83351dcfb99",
         "affectsGlobalScope": false
       },
       "../src/lib/errors/MissingExportsError.ts": {
@@ -246,19 +236,24 @@
         "signature": "50f04e8654d013809df669d32724b22525f106993d20f3f75eccfde754c3bfd8",
         "affectsGlobalScope": false
       },
-      "../src/lib/strategies/loaders/LoadSingle.ts": {
-        "version": "5672f58d2914fb88f9227b598c63d2984e262baf65177fe785d80787b33eda46",
-        "signature": "2ce05593dffce10a2ba27ca79637b3dbe751d19300289b5363da77c2cf029b4d",
+      "../src/lib/internal/import.d.ts": {
+        "version": "76621ed9c932f23fad9e22fc15493bd6b8106acec4cf3e1017507417dc178612",
+        "signature": "76621ed9c932f23fad9e22fc15493bd6b8106acec4cf3e1017507417dc178612",
+        "affectsGlobalScope": false
+      },
+      "../src/lib/strategies/LoaderStrategy.ts": {
+        "version": "40e41e686253c06841499c65bcebc2135b6294c2020be92ca8f52a2132507dd9",
+        "signature": "9b51807648fc7ec776182f773946974a8ab5daf4d3254a8de0388ab970b93468",
         "affectsGlobalScope": false
       },
       "../src/lib/Store.ts": {
-        "version": "78a829496ed0debee9d68e77b0025d438709e98521ab2904591f12cac1b4d042",
-        "signature": "7c094a08113cee125c9cb2a226cfd5075a7b893e54e4333f61bb6a75e7b9529f",
+        "version": "da6e820658fc0a948e0ca85f7702dbf0524f3f25c0a6d05a524759b469d6ce22",
+        "signature": "75b1c8fac148e7508bc3253eef140fa10cf6f655a751473b2d173ac7fca9819f",
         "affectsGlobalScope": false
       },
       "../src/lib/Piece.ts": {
-        "version": "505e50b028d2ae0c068634ec69242797874321c65756772058d828c59012af69",
-        "signature": "99b28505795f58b0ad7923bf8faccc33e6c8ee4798ae1cabc2da95dd57bc6d80",
+        "version": "5e16a2a4d7b3acd777c24e31257f20ce7a4763dcc65d64e1a38a5cc11830930a",
+        "signature": "fa091e33b961aa0f814c9e39da2e35227dad856c8581f3d71aa92df8b8ad4783",
         "affectsGlobalScope": false
       },
       "../src/lib/AliasPiece.ts": {
@@ -271,14 +266,9 @@
         "signature": "2b5a4c62d5ef574be422824782eeb7b5910e14b3754d7c7ae3075c66466df283",
         "affectsGlobalScope": false
       },
-      "../src/lib/strategies/loaders/LoadMultiple.ts": {
-        "version": "1464c6f1a59826bff4c09cb23213e9e8fb54011541cf88c8704c12bd38e8a265",
-        "signature": "e05fc036c5829183c29f9a1bbcb065250b662ee79e39ca2edcb712f0b055c1c1",
-        "affectsGlobalScope": false
-      },
       "../src/index.ts": {
-        "version": "9d312e5945315fc6a23eec8a5f1323d5afd0fd48240040bb32a5dfda80cf44cd",
-        "signature": "47b9e7168286487757f5d7a016cd669080201bcc054e8a7b9402fbaf250f68eb",
+        "version": "300d316547e007c9558b1ad690dae5f1b9bfefb79b65c4c0b17b69f6325842c6",
+        "signature": "b514b9b2ca78c2e3596edca68361bab1e8454ebbf821225197471b87a76743cf",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/color-name/index.d.ts": {
@@ -756,11 +746,8 @@
         "../src/lib/Store.ts",
         "../src/lib/errors/LoaderError.ts",
         "../src/lib/errors/MissingExportsError.ts",
-        "../src/lib/strategies/filters/IFilter.ts",
-        "../src/lib/strategies/filters/LoadJavaScript.ts",
-        "../src/lib/strategies/loaders/ILoader.ts",
-        "../src/lib/strategies/loaders/LoadMultiple.ts",
-        "../src/lib/strategies/loaders/LoadSingle.ts"
+        "../src/lib/strategies/ILoaderStrategy.ts",
+        "../src/lib/strategies/LoaderStrategy.ts"
       ],
       "../src/lib/AliasPiece.ts": [
         "../src/lib/Piece.ts"
@@ -771,7 +758,8 @@
         "../src/lib/Store.ts"
       ],
       "../src/lib/Piece.ts": [
-        "../src/lib/Store.ts"
+        "../src/lib/Store.ts",
+        "../src/lib/strategies/ILoaderStrategy.ts"
       ],
       "../src/lib/Store.ts": [
         "../node_modules/@discordjs/collection/dist/index.d.ts",
@@ -779,32 +767,29 @@
         "../node_modules/@types/node/path.d.ts",
         "../src/lib/Piece.ts",
         "../src/lib/errors/LoaderError.ts",
-        "../src/lib/strategies/filters/IFilter.ts",
-        "../src/lib/strategies/filters/LoadJavaScript.ts",
-        "../src/lib/strategies/loaders/ILoader.ts",
-        "../src/lib/strategies/loaders/LoadSingle.ts"
+        "../src/lib/strategies/ILoaderStrategy.ts",
+        "../src/lib/strategies/LoaderStrategy.ts"
       ],
       "../src/lib/errors/MissingExportsError.ts": [
         "../src/lib/errors/LoaderError.ts"
       ],
-      "../src/lib/strategies/filters/LoadJavaScript.ts": [
-        "../node_modules/@types/node/path.d.ts",
-        "../src/lib/strategies/filters/IFilter.ts"
+      "../src/lib/internal/import.d.ts": [
+        "../node_modules/@types/node/url.d.ts"
       ],
-      "../src/lib/strategies/loaders/ILoader.ts": [
+      "../src/lib/strategies/ILoaderStrategy.ts": [
         "../src/lib/Piece.ts",
         "../src/lib/Store.ts",
         "../src/lib/strategies/Shared.ts"
       ],
-      "../src/lib/strategies/loaders/LoadMultiple.ts": [
+      "../src/lib/strategies/LoaderStrategy.ts": [
+        "../node_modules/@types/node/path.d.ts",
+        "../node_modules/@types/node/url.d.ts",
+        "../src/lib/Piece.ts",
+        "../src/lib/Store.ts",
         "../src/lib/errors/MissingExportsError.ts",
-        "../src/lib/strategies/Shared.ts",
-        "../src/lib/strategies/loaders/ILoader.ts"
-      ],
-      "../src/lib/strategies/loaders/LoadSingle.ts": [
-        "../src/lib/errors/MissingExportsError.ts",
-        "../src/lib/strategies/Shared.ts",
-        "../src/lib/strategies/loaders/ILoader.ts"
+        "../src/lib/internal/import.d.ts",
+        "../src/lib/strategies/ILoaderStrategy.ts",
+        "../src/lib/strategies/Shared.ts"
       ]
     },
     "exportedModulesMap": {
@@ -982,11 +967,8 @@
         "../src/lib/Store.ts",
         "../src/lib/errors/LoaderError.ts",
         "../src/lib/errors/MissingExportsError.ts",
-        "../src/lib/strategies/filters/IFilter.ts",
-        "../src/lib/strategies/filters/LoadJavaScript.ts",
-        "../src/lib/strategies/loaders/ILoader.ts",
-        "../src/lib/strategies/loaders/LoadMultiple.ts",
-        "../src/lib/strategies/loaders/LoadSingle.ts"
+        "../src/lib/strategies/ILoaderStrategy.ts",
+        "../src/lib/strategies/LoaderStrategy.ts"
       ],
       "../src/lib/AliasPiece.ts": [
         "../src/lib/Piece.ts"
@@ -997,30 +979,29 @@
         "../src/lib/Store.ts"
       ],
       "../src/lib/Piece.ts": [
-        "../src/lib/Store.ts"
+        "../src/lib/Store.ts",
+        "../src/lib/strategies/ILoaderStrategy.ts"
       ],
       "../src/lib/Store.ts": [
         "../node_modules/@discordjs/collection/dist/index.d.ts",
         "../src/lib/Piece.ts",
-        "../src/lib/strategies/filters/IFilter.ts",
-        "../src/lib/strategies/loaders/ILoader.ts"
+        "../src/lib/strategies/ILoaderStrategy.ts"
       ],
       "../src/lib/errors/MissingExportsError.ts": [
         "../src/lib/errors/LoaderError.ts"
       ],
-      "../src/lib/strategies/filters/LoadJavaScript.ts": [
-        "../src/lib/strategies/filters/IFilter.ts"
+      "../src/lib/internal/import.d.ts": [
+        "../node_modules/@types/node/url.d.ts"
       ],
-      "../src/lib/strategies/loaders/ILoader.ts": [
+      "../src/lib/strategies/ILoaderStrategy.ts": [
         "../src/lib/Piece.ts",
         "../src/lib/Store.ts",
         "../src/lib/strategies/Shared.ts"
       ],
-      "../src/lib/strategies/loaders/LoadMultiple.ts": [
-        "../src/lib/strategies/loaders/ILoader.ts"
-      ],
-      "../src/lib/strategies/loaders/LoadSingle.ts": [
-        "../src/lib/strategies/loaders/ILoader.ts"
+      "../src/lib/strategies/LoaderStrategy.ts": [
+        "../src/lib/Piece.ts",
+        "../src/lib/Store.ts",
+        "../src/lib/strategies/ILoaderStrategy.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -1127,12 +1108,10 @@
       "../src/lib/Store.ts",
       "../src/lib/errors/LoaderError.ts",
       "../src/lib/errors/MissingExportsError.ts",
-      "../src/lib/strategies/Shared.ts",
-      "../src/lib/strategies/filters/IFilter.ts",
-      "../src/lib/strategies/filters/LoadJavaScript.ts",
-      "../src/lib/strategies/loaders/ILoader.ts",
-      "../src/lib/strategies/loaders/LoadMultiple.ts",
-      "../src/lib/strategies/loaders/LoadSingle.ts"
+      "../src/lib/internal/import.d.ts",
+      "../src/lib/strategies/ILoaderStrategy.ts",
+      "../src/lib/strategies/LoaderStrategy.ts",
+      "../src/lib/strategies/Shared.ts"
     ]
   },
   "version": "4.1.3"

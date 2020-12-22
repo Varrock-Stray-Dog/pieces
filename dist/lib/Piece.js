@@ -8,15 +8,6 @@ class Piece {
     constructor(context, options = {}) {
         var _a, _b;
         /**
-         * The extra given by the store or by the user.
-         */
-        Object.defineProperty(this, "extras", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        /**
          * The store that contains the piece.
          */
         Object.defineProperty(this, "store", {
@@ -52,11 +43,17 @@ class Piece {
             writable: true,
             value: void 0
         });
-        this.extras = context.extras;
         this.store = context.store;
         this.path = context.path;
         this.name = (_a = options.name) !== null && _a !== void 0 ? _a : context.name;
         this.enabled = (_b = options.enabled) !== null && _b !== void 0 ? _b : true;
+    }
+    /**
+     * The context given by the store.
+     * @see Store.injectedContext
+     */
+    get context() {
+        return this.store.context;
     }
     /**
      * Per-piece listener that is called when the piece is loaded into the store.
