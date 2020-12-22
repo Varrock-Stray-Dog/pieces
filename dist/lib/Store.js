@@ -163,7 +163,7 @@ class Store extends collection_1.default {
                 }
             }
             catch (error) {
-                this.strategy.onError(error, child);
+                this.strategy.onError(error, data.path);
             }
         }
     }

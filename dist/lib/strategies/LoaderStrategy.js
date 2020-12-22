@@ -35,7 +35,7 @@ class LoaderStrategy {
         if (name === '')
             return null;
         // Return the name and extension.
-        return { extension, path: name };
+        return { extension, path, name };
     }
     async preload(file) {
         const mjs = file.extension === '.mjs' || (file.extension === '.js' && this.clientESM);
