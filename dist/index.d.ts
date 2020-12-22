@@ -366,9 +366,13 @@ declare class Piece {
      */
     onUnload(): Awaited<unknown>;
     /**
-     * Disables the piece and removes it from its store
+     * Unloads and disables the piece.
      */
-    disable(): Promise<void>;
+    unload(): Promise<void>;
+    /**
+     * Reloads the piece by loading the same path in the store.
+     */
+    reload(): Promise<void>;
     toJSON(): Record<string, any>;
 }
 

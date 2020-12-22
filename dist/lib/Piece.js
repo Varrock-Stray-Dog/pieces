@@ -70,11 +70,17 @@ class Piece {
         return undefined;
     }
     /**
-     * Disables the piece and removes it from its store
+     * Unloads and disables the piece.
      */
-    async disable() {
+    async unload() {
         await this.store.unload(this.name);
         this.enabled = false;
+    }
+    /**
+     * Reloads the piece by loading the same path in the store.
+     */
+    async reload() {
+        await this.store.load(this.path);
     }
     toJSON() {
         return {
