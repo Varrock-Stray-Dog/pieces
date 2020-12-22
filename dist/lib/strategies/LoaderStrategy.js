@@ -41,7 +41,7 @@ class LoaderStrategy {
     async preload(file) {
         const mjs = file.extension === '.mjs' || (file.extension === '.js' && this.clientESM);
         if (mjs) {
-            const url = new url_1.URL(file.path, 'file:');
+            const url = url_1.pathToFileURL(file.path);
             url.searchParams.append('d', Date.now().toString());
             return internal_1.mjsImport(url);
         }
