@@ -79,7 +79,7 @@ class Store extends collection_1.default {
         if (data === null)
             return;
         for await (const Ctor of this.strategy.load(this, data)) {
-            yield await this.insert(this.construct(Ctor, path, data.path));
+            yield await this.insert(this.construct(Ctor, data));
         }
     }
     /**
@@ -144,8 +144,8 @@ class Store extends collection_1.default {
      * @param path The path of the file.
      * @param name The name of the piece.
      */
-    construct(Ctor, path, name) {
-        return new Ctor({ store: this, path, name }, { name, enabled: true });
+    construct(Ctor, data) {
+        return new Ctor({ store: this, path: data.path, name: data.name }, { name: data.name, enabled: true });
     }
     /**
      * Loads a directory into the store.
@@ -159,7 +159,7 @@ class Store extends collection_1.default {
                 continue;
             try {
                 for await (const Ctor of this.strategy.load(this, data)) {
-                    yield this.construct(Ctor, child, data.path);
+                    yield this.construct(Ctor, data);
                 }
             }
             catch (error) {

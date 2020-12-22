@@ -202,7 +202,7 @@ declare class Store<T extends Piece> extends Collection<string, T> {
      * @param path The path of the file.
      * @param name The name of the piece.
      */
-    protected construct(Ctor: ILoaderResultEntry<T>, path: string, name: string): T;
+    protected construct(Ctor: ILoaderResultEntry<T>, data: ModuleData): T;
     /**
      * Loads a directory into the store.
      * @param directory The directory to load the pieces from.
