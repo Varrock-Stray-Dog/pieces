@@ -4,7 +4,7 @@ exports.LoaderStrategy = void 0;
 const path_1 = require("path");
 const url_1 = require("url");
 const MissingExportsError_1 = require("../errors/MissingExportsError");
-const import_1 = require("../internal/import");
+const internal_1 = require("../internal");
 const Shared_1 = require("./Shared");
 /**
  * A multi-purpose feature-complete loader strategy supporting multi-piece modules as well as supporting both ECMAScript
@@ -42,7 +42,7 @@ class LoaderStrategy {
         if (mjs) {
             const url = new url_1.URL(file.path, 'file:');
             url.searchParams.append('d', Date.now().toString());
-            return import_1.mjsImport(url);
+            return internal_1.mjsImport(url);
         }
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const mod = require(file.path);
