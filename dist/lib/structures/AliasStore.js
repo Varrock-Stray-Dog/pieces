@@ -35,7 +35,7 @@ class AliasStore extends Store_1.Store {
      * @param name The name of the file to load.
      * @return Returns the piece that was unloaded.
      */
-    async unload(name) {
+    unload(name) {
         const piece = this.resolve(name);
         // Unload all aliases for the given piece:
         for (const alias of piece.aliases) {

@@ -4,7 +4,8 @@ exports.LoaderStrategy = void 0;
 const path_1 = require("path");
 const url_1 = require("url");
 const MissingExportsError_1 = require("../errors/MissingExportsError");
-const internal_1 = require("../internal");
+const internal_1 = require("../internal/internal");
+const RootScan_1 = require("../internal/RootScan");
 const Shared_1 = require("./Shared");
 /**
  * A multi-purpose feature-complete loader strategy supporting multi-piece modules as well as supporting both ECMAScript
@@ -16,7 +17,7 @@ class LoaderStrategy {
             enumerable: true,
             configurable: true,
             writable: true,
-            value: require.main === undefined
+            value: RootScan_1.getRootData().type === 'ESM'
         });
         Object.defineProperty(this, "supportedExtensions", {
             enumerable: true,

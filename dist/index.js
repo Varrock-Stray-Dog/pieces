@@ -10,12 +10,12 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./lib/AliasPiece"), exports);
-__exportStar(require("./lib/AliasStore"), exports);
 __exportStar(require("./lib/errors/LoaderError"), exports);
 __exportStar(require("./lib/errors/MissingExportsError"), exports);
-__exportStar(require("./lib/Piece"), exports);
-__exportStar(require("./lib/Store"), exports);
 __exportStar(require("./lib/strategies/ILoaderStrategy"), exports);
 __exportStar(require("./lib/strategies/LoaderStrategy"), exports);
+__exportStar(require("./lib/structures/AliasPiece"), exports);
+__exportStar(require("./lib/structures/AliasStore"), exports);
+__exportStar(require("./lib/structures/Piece"), exports);
+__exportStar(require("./lib/structures/Store"), exports);
 //# sourceMappingURL=index.js.map

@@ -1,131 +1,31 @@
 import Collection from '@discordjs/collection';
 
-/**
- * A readonly array of any values.
- * @private
- */
-declare type Arr = readonly any[];
-/**
- * A generic constructor.
- * @private
- */
-declare type Ctor<A extends Arr = readonly any[], R = any> = new (...args: A) => R;
-
-declare type Constructor<T> = new (...args: any[]) => T;
-declare type Awaited<T> = PromiseLike<T> | T;
-/**
- * The module data information.
- */
-interface ModuleData {
-    /**
-     * The name of the module.
-     */
-    name: string;
-    /**
-     * The absolute path to the module.
-     */
-    path: string;
-    /**
-     * The extension of the module.
-     */
-    extension: string;
+declare const enum LoaderErrorType {
+    EmptyModule = "EMPTY_MODULE",
+    UnloadedPiece = "UNLOADED_PIECE",
+    IncorrectType = "INCORRECT_TYPE"
 }
 /**
- * The result from the filter.
+ * Describes a loader error with a type for easy indentification.
  */
-declare type FilterResult = ModuleData | null;
+declare class LoaderError extends Error {
+    /**
+     * The type of the error that was thrown.
+     */
+    readonly type: LoaderErrorType;
+    constructor(type: LoaderErrorType, message: string);
+    get name(): string;
+}
+
 /**
- * Represents the return data from [[ILoaderStrategy.preload]]
+ * Describes a [[LoaderErrorType.EmptyModule]] loader error and adds a path for easy identification.
  */
-declare type PreloadResult<T extends Piece> = Awaited<Constructor<T> & Record<PropertyKey, unknown>>;
-/**
- * Represents the return data from [[ILoaderStrategy.preload]]
- */
-declare type AsyncPreloadResult<T extends Piece> = Promise<Constructor<T> & Record<PropertyKey, unknown>>;
-/**
- * Represents an entry from [[ILoaderResult]].
- */
-declare type ILoaderResultEntry<T extends Piece> = Ctor<ConstructorParameters<typeof Piece>, T>;
-/**
- * Represents the return data from [[ILoaderStrategy.load]].
- */
-declare type ILoaderResult<T extends Piece> = AsyncIterableIterator<ILoaderResultEntry<T>>;
-/**
- * An abstracted loader strategy interface.
- */
-interface ILoaderStrategy<T extends Piece> {
+declare class MissingExportsError extends LoaderError {
     /**
-     * Retrieves the name and the extension of the specified file path.
-     * @param path The path of the file to be processed.
-     * @return A [[PieceData]] on success, otherwise `null` to stop the store from processing the path.
-     * @example
-     * ```typescript
-     * // ts-node support
-     * class MyStrategy extends LoaderStrategy {
-     *   filter(path) {
-     *     const extension = extname(path);
-     *     if (!['.js', '.ts'].includes(extension)) return null;
-     *     const name = basename(path, extension);
-     *     return { extension, name };
-     *   }
-     * }
+     * The path of the module that did not have exports.
      */
-    filter(path: string): FilterResult;
-    /**
-     * The pre-load hook, use this to override the loader.
-     * @example
-     * ```typescript
-     * // CommonJS support:
-     * class MyStrategy extends LoaderStrategy {
-     *   preload(path) {
-     *     return require(path);
-     *   }
-     * }
-     * ```
-     * @example
-     * ```typescript
-     * // ESM support:
-     * class MyStrategy extends LoaderStrategy {
-     *   preload(file) {
-     *     return import(file.path);
-     *   }
-     * }
-     * ```
-     */
-    preload(file: ModuleData): PreloadResult<T>;
-    /**
-     * The load hook, use this to override the loader.
-     * @example
-     * ```typescript
-     * class MyStrategy extends LoaderStrategy {
-     *   load(store, file) {
-     *     // ...
-     *   }
-     * }
-     */
-    load(store: Store<T>, file: ModuleData): ILoaderResult<T>;
-    /**
-     * Called after a piece has been loaded, but before [[Piece.onLoad]] and [[Store.set]].
-     * @param store The store that holds the piece.
-     * @param piece The piece that was loaded.
-     */
-    onLoad(store: Store<T>, piece: T): Awaited<unknown>;
-    /**
-     * Called after all pieces have been loaded.
-     * @param store The store that loaded all pieces.
-     */
-    onLoadAll(store: Store<T>): Awaited<unknown>;
-    /**
-     * Called after a piece has been unloaded or overwritten by a newly loaded piece.
-     * @param store The store that held the piece.
-     * @param piece The piece that was unloaded.
-     */
-    onUnload(store: Store<T>, piece: T): Awaited<unknown>;
-    /**
-     * @param error The error that was thrown.
-     * @param path The path of the file that caused the error to be thrown.
-     */
-    onError(error: Error, path: string): void;
+    readonly path: string;
+    constructor(path: string);
 }
 
 /**
@@ -383,6 +283,150 @@ declare class Piece {
     toJSON(): Record<string, any>;
 }
 
+/**
+ * A readonly array of any values.
+ * @private
+ */
+declare type Arr = readonly any[];
+/**
+ * A generic constructor.
+ * @private
+ */
+declare type Ctor<A extends Arr = readonly any[], R = any> = new (...args: A) => R;
+
+declare type Constructor<T> = new (...args: any[]) => T;
+declare type Awaited<T> = PromiseLike<T> | T;
+/**
+ * The module data information.
+ */
+interface ModuleData {
+    /**
+     * The name of the module.
+     */
+    name: string;
+    /**
+     * The absolute path to the module.
+     */
+    path: string;
+    /**
+     * The extension of the module.
+     */
+    extension: string;
+}
+/**
+ * The result from the filter.
+ */
+declare type FilterResult = ModuleData | null;
+/**
+ * Represents the return data from [[ILoaderStrategy.preload]]
+ */
+declare type PreloadResult<T extends Piece> = Awaited<Constructor<T> & Record<PropertyKey, unknown>>;
+/**
+ * Represents the return data from [[ILoaderStrategy.preload]]
+ */
+declare type AsyncPreloadResult<T extends Piece> = Promise<Constructor<T> & Record<PropertyKey, unknown>>;
+/**
+ * Represents an entry from [[ILoaderResult]].
+ */
+declare type ILoaderResultEntry<T extends Piece> = Ctor<ConstructorParameters<typeof Piece>, T>;
+/**
+ * Represents the return data from [[ILoaderStrategy.load]].
+ */
+declare type ILoaderResult<T extends Piece> = AsyncIterableIterator<ILoaderResultEntry<T>>;
+/**
+ * An abstracted loader strategy interface.
+ */
+interface ILoaderStrategy<T extends Piece> {
+    /**
+     * Retrieves the name and the extension of the specified file path.
+     * @param path The path of the file to be processed.
+     * @return A [[PieceData]] on success, otherwise `null` to stop the store from processing the path.
+     * @example
+     * ```typescript
+     * // ts-node support
+     * class MyStrategy extends LoaderStrategy {
+     *   filter(path) {
+     *     const extension = extname(path);
+     *     if (!['.js', '.ts'].includes(extension)) return null;
+     *     const name = basename(path, extension);
+     *     return { extension, name };
+     *   }
+     * }
+     */
+    filter(path: string): FilterResult;
+    /**
+     * The pre-load hook, use this to override the loader.
+     * @example
+     * ```typescript
+     * // CommonJS support:
+     * class MyStrategy extends LoaderStrategy {
+     *   preload(path) {
+     *     return require(path);
+     *   }
+     * }
+     * ```
+     * @example
+     * ```typescript
+     * // ESM support:
+     * class MyStrategy extends LoaderStrategy {
+     *   preload(file) {
+     *     return import(file.path);
+     *   }
+     * }
+     * ```
+     */
+    preload(file: ModuleData): PreloadResult<T>;
+    /**
+     * The load hook, use this to override the loader.
+     * @example
+     * ```typescript
+     * class MyStrategy extends LoaderStrategy {
+     *   load(store, file) {
+     *     // ...
+     *   }
+     * }
+     */
+    load(store: Store<T>, file: ModuleData): ILoaderResult<T>;
+    /**
+     * Called after a piece has been loaded, but before [[Piece.onLoad]] and [[Store.set]].
+     * @param store The store that holds the piece.
+     * @param piece The piece that was loaded.
+     */
+    onLoad(store: Store<T>, piece: T): Awaited<unknown>;
+    /**
+     * Called after all pieces have been loaded.
+     * @param store The store that loaded all pieces.
+     */
+    onLoadAll(store: Store<T>): Awaited<unknown>;
+    /**
+     * Called after a piece has been unloaded or overwritten by a newly loaded piece.
+     * @param store The store that held the piece.
+     * @param piece The piece that was unloaded.
+     */
+    onUnload(store: Store<T>, piece: T): Awaited<unknown>;
+    /**
+     * @param error The error that was thrown.
+     * @param path The path of the file that caused the error to be thrown.
+     */
+    onError(error: Error, path: string): void;
+}
+
+/**
+ * A multi-purpose feature-complete loader strategy supporting multi-piece modules as well as supporting both ECMAScript
+ * Modules and CommonJS with reloading support.
+ */
+declare class LoaderStrategy<T extends Piece> implements ILoaderStrategy<T> {
+    private readonly clientESM;
+    private readonly supportedExtensions;
+    filter(path: string): FilterResult;
+    preload(file: ModuleData): AsyncPreloadResult<T>;
+    load(store: Store<T>, file: ModuleData): ILoaderResult<T>;
+    onLoad(): unknown;
+    onLoadAll(): unknown;
+    onUnload(): unknown;
+    onError(error: Error, path: string): void;
+}
+
 interface AliasPieceOptions extends PieceOptions {
     /**
      * The aliases for the piece.
@@ -427,50 +471,6 @@ declare class AliasStore<T extends AliasPiece> extends Store<T> {
      * @return The inserted piece.
      */
     protected insert(piece: T): Promise<T>;
-}
-
-declare const enum LoaderErrorType {
-    EmptyModule = "EMPTY_MODULE",
-    UnloadedPiece = "UNLOADED_PIECE",
-    IncorrectType = "INCORRECT_TYPE"
-}
-/**
- * Describes a loader error with a type for easy indentification.
- */
-declare class LoaderError extends Error {
-    /**
-     * The type of the error that was thrown.
-     */
-    readonly type: LoaderErrorType;
-    constructor(type: LoaderErrorType, message: string);
-    get name(): string;
-}
-
-/**
- * Describes a [[LoaderErrorType.EmptyModule]] loader error and adds a path for easy identification.
- */
-declare class MissingExportsError extends LoaderError {
-    /**
-     * The path of the module that did not have exports.
-     */
-    readonly path: string;
-    constructor(path: string);
-}
-
-/**
- * A multi-purpose feature-complete loader strategy supporting multi-piece modules as well as supporting both ECMAScript
- * Modules and CommonJS with reloading support.
- */
-declare class LoaderStrategy<T extends Piece> implements ILoaderStrategy<T> {
-    private readonly clientESM;
-    private readonly supportedExtensions;
-    filter(path: string): FilterResult;
-    preload(file: ModuleData): AsyncPreloadResult<T>;
-    load(store: Store<T>, file: ModuleData): ILoaderResult<T>;
-    onLoad(): unknown;
-    onLoadAll(): unknown;
-    onUnload(): unknown;
-    onError(error: Error, path: string): void;
 }
 
 export { AliasPiece, AliasPieceOptions, AliasStore, AsyncPreloadResult, Awaited, Constructor, FilterResult, ILoaderResult, ILoaderResultEntry, ILoaderStrategy, LoaderError, LoaderErrorType, LoaderStrategy, MissingExportsError, ModuleData, Piece, PieceContext, PieceContextExtras, PieceOptions, PreloadResult, Store, StoreOptions };

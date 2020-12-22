@@ -7,8 +7,8 @@ exports.Store = void 0;
 const collection_1 = __importDefault(require("@discordjs/collection"));
 const fs_1 = require("fs");
 const path_1 = require("path");
-const LoaderError_1 = require("./errors/LoaderError");
-const LoaderStrategy_1 = require("./strategies/LoaderStrategy");
+const LoaderError_1 = require("../errors/LoaderError");
+const LoaderStrategy_1 = require("../strategies/LoaderStrategy");
 /**
  * The store class which contains [[Piece]]s.
  */
