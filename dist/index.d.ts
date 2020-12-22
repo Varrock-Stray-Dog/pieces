@@ -169,11 +169,11 @@ declare class Store<T extends Piece> extends Collection<string, T> {
      */
     registerPath(path: string): this;
     /**
-     * Loads a piece or more from a path.
+     * Loads one or more pieces from a path.
      * @param path The path of the file to load.
      * @return An async iterator that yields each one of the loaded pieces.
      */
-    load(path: string): AsyncIterableIterator<T>;
+    load(path: string): Promise<T[]>;
     /**
      * Unloads a piece given its instance or its name.
      * @param name The name of the file to load.

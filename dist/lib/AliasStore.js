@@ -52,9 +52,6 @@ class AliasStore extends Store_1.Store {
      * @return The inserted piece.
      */
     async insert(piece) {
-        const previous = super.get(piece.name);
-        if (previous)
-            await this.unload(previous);
         for (const key of piece.aliases) {
             this.aliases.set(key, piece);
         }

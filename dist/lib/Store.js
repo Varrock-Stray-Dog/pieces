@@ -70,17 +70,19 @@ class Store extends collection_1.default {
         return this;
     }
     /**
-     * Loads a piece or more from a path.
+     * Loads one or more pieces from a path.
      * @param path The path of the file to load.
      * @return An async iterator that yields each one of the loaded pieces.
      */
-    async *load(path) {
+    async load(path) {
         const data = this.strategy.filter(path);
         if (data === null)
-            return;
+            return [];
+        const promises = [];
         for await (const Ctor of this.strategy.load(this, data)) {
-            yield await this.insert(this.construct(Ctor, data));
+            promises.push(this.insert(this.construct(Ctor, data)));
         }
+        return Promise.all(promises);
     }
     /**
      * Unloads a piece given its instance or its name.
@@ -133,6 +135,10 @@ class Store extends collection_1.default {
     async insert(piece) {
         if (!piece.enabled)
             return piece;
+        const previous = super.get(piece.name);
+        if (previous)
+            await this.unload(previous);
+        // Set the piece, call post-load, and call the piece's load:
         this.set(piece.name, piece);
         this.strategy.onPostLoad(this, piece);
         await piece.onLoad();
