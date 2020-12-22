@@ -12,6 +12,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./lib/errors/LoaderError"), exports);
 __exportStar(require("./lib/errors/MissingExportsError"), exports);
+__exportStar(require("./lib/internal/RootScan"), exports);
 __exportStar(require("./lib/strategies/ILoaderStrategy"), exports);
 __exportStar(require("./lib/strategies/LoaderStrategy"), exports);
 __exportStar(require("./lib/structures/AliasPiece"), exports);

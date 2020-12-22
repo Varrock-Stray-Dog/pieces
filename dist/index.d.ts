@@ -28,6 +28,12 @@ declare class MissingExportsError extends LoaderError {
     constructor(path: string);
 }
 
+declare function getRootData(): RootData;
+interface RootData {
+    root: string;
+    type: 'ESM' | 'CommonJS';
+}
+
 /**
  * The options for the store, this features both hooks (changes the behaviour) and handlers (similar to event listeners).
  */
@@ -473,4 +479,4 @@ declare class AliasStore<T extends AliasPiece> extends Store<T> {
     protected insert(piece: T): Promise<T>;
 }
 
-export { AliasPiece, AliasPieceOptions, AliasStore, AsyncPreloadResult, Awaited, Constructor, FilterResult, ILoaderResult, ILoaderResultEntry, ILoaderStrategy, LoaderError, LoaderErrorType, LoaderStrategy, MissingExportsError, ModuleData, Piece, PieceContext, PieceContextExtras, PieceOptions, PreloadResult, Store, StoreOptions };
+export { AliasPiece, AliasPieceOptions, AliasStore, AsyncPreloadResult, Awaited, Constructor, FilterResult, ILoaderResult, ILoaderResultEntry, ILoaderStrategy, LoaderError, LoaderErrorType, LoaderStrategy, MissingExportsError, ModuleData, Piece, PieceContext, PieceContextExtras, PieceOptions, PreloadResult, RootData, Store, StoreOptions, getRootData };
