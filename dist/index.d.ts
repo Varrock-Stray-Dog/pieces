@@ -105,15 +105,22 @@ interface ILoaderStrategy<T extends Piece> {
      */
     load(store: Store<T>, file: ModuleData): ILoaderResult<T>;
     /**
+     * Called after a piece has been loaded, but before [[Piece.onLoad]] and [[Store.set]].
      * @param store The store that holds the piece.
      * @param piece The piece that was loaded.
      */
-    onPostLoad(store: Store<T>, piece: T): unknown;
+    onLoad(store: Store<T>, piece: T): Awaited<unknown>;
     /**
+     * Called after all pieces have been loaded.
+     * @param store The store that loaded all pieces.
+     */
+    onLoadAll(store: Store<T>): Awaited<unknown>;
+    /**
+     * Called after a piece has been unloaded or overwritten by a newly loaded piece.
      * @param store The store that held the piece.
      * @param piece The piece that was unloaded.
      */
-    onUnload(store: Store<T>, piece: T): unknown;
+    onUnload(store: Store<T>, piece: T): Awaited<unknown>;
     /**
      * @param error The error that was thrown.
      * @param path The path of the file that caused the error to be thrown.
@@ -285,7 +292,7 @@ declare class Store<T extends Piece> extends Collection<string, T> {
      * The default strategy, defaults to [[LoaderStrategy]], which is constructed on demand when a store is constructed,
      * when none was set beforehand.
      */
-    static defaultStrategy: ILoaderStrategy<any> | null;
+    static defaultStrategy: ILoaderStrategy<any>;
 }
 
 /**
@@ -460,7 +467,8 @@ declare class LoaderStrategy<T extends Piece> implements ILoaderStrategy<T> {
     filter(path: string): FilterResult;
     preload(file: ModuleData): AsyncPreloadResult<T>;
     load(store: Store<T>, file: ModuleData): ILoaderResult<T>;
-    onPostLoad(): unknown;
+    onLoad(): unknown;
+    onLoadAll(): unknown;
     onUnload(): unknown;
     onError(error: Error, path: string): void;
 }

@@ -68,7 +68,10 @@ class LoaderStrategy {
             throw new MissingExportsError_1.MissingExportsError(file.path);
         }
     }
-    onPostLoad() {
+    onLoad() {
+        return undefined;
+    }
+    onLoadAll() {
         return undefined;
     }
     onUnload() {

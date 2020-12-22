@@ -18,7 +18,7 @@ class Store extends collection_1.default {
      * @param options The options for the store.
      */
     constructor(constructor, options) {
-        var _a, _b, _c;
+        var _a, _b;
         super();
         Object.defineProperty(this, "Constructor", {
             enumerable: true,
@@ -47,7 +47,7 @@ class Store extends collection_1.default {
         this.Constructor = constructor;
         this.name = options.name;
         this.paths = new Set((_a = options.paths) !== null && _a !== void 0 ? _a : []);
-        this.strategy = (_b = options.strategy) !== null && _b !== void 0 ? _b : ((_c = Store.defaultStrategy) !== null && _c !== void 0 ? _c : (Store.defaultStrategy = new LoaderStrategy_1.LoaderStrategy()));
+        this.strategy = (_b = options.strategy) !== null && _b !== void 0 ? _b : Store.defaultStrategy;
     }
     /**
      * The extras to be used for dependency injection in all pieces. Returns a reference of [[Store.defaultExtras]].
@@ -112,6 +112,7 @@ class Store extends collection_1.default {
         for (const piece of pieces) {
             await this.insert(piece);
         }
+        this.strategy.onLoadAll(this);
     }
     /**
      * Resolves a piece by its name or its instance.
@@ -138,7 +139,7 @@ class Store extends collection_1.default {
         if (!piece.enabled)
             return piece;
         // Load piece:
-        this.strategy.onPostLoad(this, piece);
+        this.strategy.onLoad(this, piece);
         await piece.onLoad();
         // Unload existing piece, if any:
         const previous = super.get(piece.name);
@@ -281,6 +282,6 @@ Object.defineProperty(Store, "defaultStrategy", {
     enumerable: true,
     configurable: true,
     writable: true,
-    value: null
+    value: new LoaderStrategy_1.LoaderStrategy()
 });
 //# sourceMappingURL=Store.js.map
