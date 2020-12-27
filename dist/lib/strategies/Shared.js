@@ -19,7 +19,7 @@ exports.isClass = isClass;
 function classExtends(value, base) {
     let ctor = value;
     while (ctor !== null) {
-        if (ctor === base)
+        if (ctor.constructor === base.constructor)
             return true;
         ctor = Object.getPrototypeOf(ctor);
     }
