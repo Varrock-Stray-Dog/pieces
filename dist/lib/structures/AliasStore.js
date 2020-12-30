@@ -31,6 +31,13 @@ class AliasStore extends Store_1.Store {
         return (_a = super.get(key)) !== null && _a !== void 0 ? _a : this.aliases.get(key);
     }
     /**
+     * Checks whether a key is in the store, or is an alias
+     * @param key The key to check
+     */
+    has(key) {
+        return super.has(key) || this.aliases.has(key);
+    }
+    /**
      * Unloads a piece given its instance or its name, and removes all the aliases.
      * @param name The name of the file to load.
      * @return Returns the piece that was unloaded.

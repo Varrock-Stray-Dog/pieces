@@ -466,6 +466,11 @@ declare class AliasStore<T extends AliasPiece> extends Store<T> {
      */
     get(key: string): T | undefined;
     /**
+     * Checks whether a key is in the store, or is an alias
+     * @param key The key to check
+     */
+    has(key: string): boolean;
+    /**
      * Unloads a piece given its instance or its name, and removes all the aliases.
      * @param name The name of the file to load.
      * @return Returns the piece that was unloaded.
