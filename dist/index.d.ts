@@ -54,6 +54,20 @@ interface StoreOptions<T extends Piece> {
     readonly strategy?: ILoaderStrategy<T>;
 }
 /**
+ * An interface representing a logger function.
+ */
+interface StoreLogger {
+    /**
+     * @param value The string to print. All strings will be formatted with the format `[STORE => ${name}] [${type}] ${content}`,
+     * where the content may have identifiers (values or names of methods) surrounded by `'`. For example:
+     *
+     * - `[STORE => commands] [LOAD] Skipped piece '/home/user/bot/src/commands/foo.js' as 'LoaderStrategy#filter' returned 'null'.`
+     * - `[STORE => commands] [INSERT] Unloaded new piece 'foo' due to 'enabled' being 'false'.`
+     * - `[STORE => commands] [UNLOAD] Unloaded piece 'foo'.`
+     */
+    (value: string): void;
+}
+/**
  * The store class which contains [[Piece]]s.
  */
 declare class Store<T extends Piece> extends Collection<string, T> {
@@ -199,6 +213,10 @@ declare class Store<T extends Piece> extends Collection<string, T> {
      * when none was set beforehand.
      */
     static defaultStrategy: ILoaderStrategy<any>;
+    /**
+     * The default logger, defaults to `null`.
+     */
+    static logger: StoreLogger | null;
 }
 
 /**
@@ -484,4 +502,4 @@ declare class AliasStore<T extends AliasPiece> extends Store<T> {
     protected insert(piece: T): Promise<T>;
 }
 
-export { AliasPiece, AliasPieceOptions, AliasStore, AsyncPreloadResult, Awaited, Constructor, FilterResult, ILoaderResult, ILoaderResultEntry, ILoaderStrategy, LoaderError, LoaderErrorType, LoaderStrategy, MissingExportsError, ModuleData, Piece, PieceContext, PieceContextExtras, PieceOptions, PreloadResult, RootData, Store, StoreOptions, getRootData };
+export { AliasPiece, AliasPieceOptions, AliasStore, AsyncPreloadResult, Awaited, Constructor, FilterResult, ILoaderResult, ILoaderResultEntry, ILoaderStrategy, LoaderError, LoaderErrorType, LoaderStrategy, MissingExportsError, ModuleData, Piece, PieceContext, PieceContextExtras, PieceOptions, PreloadResult, RootData, Store, StoreLogger, StoreOptions, getRootData };

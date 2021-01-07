@@ -66,7 +66,9 @@ class Store extends collection_1.default {
      * ```
      */
     registerPath(path) {
+        var _a;
         this.paths.add(path);
+        (_a = Store.logger) === null || _a === void 0 ? void 0 : _a.call(Store, `[STORE => ${this.name}] [REGISTER] Registered path '${path}'.`);
         return this;
     }
     /**
@@ -75,9 +77,12 @@ class Store extends collection_1.default {
      * @return An async iterator that yields each one of the loaded pieces.
      */
     async load(path) {
+        var _a;
         const data = this.strategy.filter(path);
-        if (data === null)
+        if (data === null) {
+            (_a = Store.logger) === null || _a === void 0 ? void 0 : _a.call(Store, `[STORE => ${this.name}] [LOAD] Skipped piece '${path}' as 'LoaderStrategy#filter' returned 'null'.`);
             return [];
+        }
         const promises = [];
         for await (const Ctor of this.strategy.load(this, data)) {
             promises.push(this.insert(this.construct(Ctor, data)));
@@ -90,29 +95,39 @@ class Store extends collection_1.default {
      * @return Returns the piece that was unloaded.
      */
     async unload(name) {
+        var _a, _b;
         const piece = this.resolve(name);
         // Unload piece:
         this.strategy.onUnload(this, piece);
         await piece.onUnload();
+        (_a = Store.logger) === null || _a === void 0 ? void 0 : _a.call(Store, `[STORE => ${this.name}] [UNLOAD] Unloaded piece '${piece.name}'.`);
         // Remove from cache and return it:
         this.delete(piece.name);
+        (_b = Store.logger) === null || _b === void 0 ? void 0 : _b.call(Store, `[STORE => ${this.name}] [UNLOAD] Removed piece '${piece.name}'.`);
         return piece;
     }
     /**
      * Loads all pieces from all directories specified by [[paths]].
      */
     async loadAll() {
+        var _a, _b, _c;
         const pieces = [];
         for (const path of this.paths) {
             for await (const piece of this.loadPath(path)) {
                 pieces.push(piece);
             }
         }
+        (_a = Store.logger) === null || _a === void 0 ? void 0 : _a.call(Store, `[STORE => ${this.name}] [LOAD-ALL] Found '${pieces.length}' pieces.`);
+        // Clear the store before inserting the new pieces:
         this.clear();
+        (_b = Store.logger) === null || _b === void 0 ? void 0 : _b.call(Store, `[STORE => ${this.name}] [LOAD-ALL] Cleared all pieces.`);
+        // Load each piece:
         for (const piece of pieces) {
             await this.insert(piece);
         }
+        // Call onLoadAll:
         this.strategy.onLoadAll(this);
+        (_c = Store.logger) === null || _c === void 0 ? void 0 : _c.call(Store, `[STORE => ${this.name}] [LOAD-ALL] Successfully loaded '${this.size}' pieces.`);
     }
     /**
      * Resolves a piece by its name or its instance.
@@ -136,24 +151,30 @@ class Store extends collection_1.default {
      * @return The inserted piece.
      */
     async insert(piece) {
+        var _a, _b, _c, _d;
         if (!piece.enabled)
             return piece;
         // Load piece:
         this.strategy.onLoad(this, piece);
         await piece.onLoad();
+        (_a = Store.logger) === null || _a === void 0 ? void 0 : _a.call(Store, `[STORE => ${this.name}] [INSERT] Loaded new piece '${piece.name}'.`);
         // If the onLoad disabled the piece, call unload and return it:
         if (!piece.enabled) {
             // Unload piece:
             this.strategy.onUnload(this, piece);
             await piece.onUnload();
+            (_b = Store.logger) === null || _b === void 0 ? void 0 : _b.call(Store, `[STORE => ${this.name}] [INSERT] Unloaded new piece '${piece.name}' due to 'enabled' being 'false'.`);
             return piece;
         }
         // Unload existing piece, if any:
         const previous = super.get(piece.name);
-        if (previous)
+        if (previous) {
             await this.unload(previous);
+            (_c = Store.logger) === null || _c === void 0 ? void 0 : _c.call(Store, `[STORE => ${this.name}] [INSERT] Unloaded existing piece '${piece.name}' due to conflicting 'name'.`);
+        }
         // Set the new piece and return it:
         this.set(piece.name, piece);
+        (_d = Store.logger) === null || _d === void 0 ? void 0 : _d.call(Store, `[STORE => ${this.name}] [INSERT] Inserted new piece '${piece.name}'.`);
         return piece;
     }
     /**
@@ -171,10 +192,14 @@ class Store extends collection_1.default {
      * @return An async iterator that yields the pieces to be loaded into the store.
      */
     async *loadPath(directory) {
+        var _a, _b;
+        (_a = Store.logger) === null || _a === void 0 ? void 0 : _a.call(Store, `[STORE => ${this.name}] [WALK] Loading all pieces from '${directory}'.`);
         for await (const child of this.walk(directory)) {
             const data = this.strategy.filter(child);
-            if (data === null)
+            if (data === null) {
+                (_b = Store.logger) === null || _b === void 0 ? void 0 : _b.call(Store, `[STORE => ${this.name}] [LOAD] Skipped piece '${child}' as 'LoaderStrategy#filter' returned 'null'.`);
                 continue;
+            }
             try {
                 for await (const Ctor of this.strategy.load(this, data)) {
                     yield this.construct(Ctor, data);
@@ -191,6 +216,8 @@ class Store extends collection_1.default {
      * @return An async iterator that yields the modules to be processed and loaded into the store.
      */
     async *walk(path) {
+        var _a;
+        (_a = Store.logger) === null || _a === void 0 ? void 0 : _a.call(Store, `[STORE => ${this.name}] [WALK] Loading all pieces from '${path}'.`);
         try {
             const dir = await fs_1.promises.opendir(path);
             for await (const item of dir) {
@@ -290,5 +317,14 @@ Object.defineProperty(Store, "defaultStrategy", {
     configurable: true,
     writable: true,
     value: new LoaderStrategy_1.LoaderStrategy()
+});
+/**
+ * The default logger, defaults to `null`.
+ */
+Object.defineProperty(Store, "logger", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: null
 });
 //# sourceMappingURL=Store.js.map
